@@ -1,0 +1,2291 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PortfolioHub — گالری الهام‌بخش طراحان</title>
+  <meta name="description"
+    content="یک لندینگ الهام‌گرفته از شبکه‌های نمایش آثار؛ طراحی تمیز، سریع و واکنش‌گرا با Masonry Grid." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* متغیرهای رنگی و استایل */
+    :root {
+      --bg: #0b0c0f;
+      --card: #14161a;
+      --muted: #9aa3af;
+      --text: #eef2f7;
+      --brand: #3b82f6;
+      --chip: #1d2128;
+      --chip-br: #2a2f37;
+      --accent: #22c55e;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --shadow: 0 6px 30px rgba(0, 0, 0, .28);
+      --radius: 18px;
+      --header-height: 150px;
+      --search-height: 80px;
+      --blue-dark: #0d47a1;
+      --blue-light: #2196f3;
+    }
+
+    /* ===== Header ===== */
+    /* Reset و تنظیمات پایه */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      direction: rtl;
+    }
+
+    /* استایل هدر اصلی */
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 5%;
+      background-color: #2c3e50;
+      color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* استایل ستون‌ها */
+    .column {
+      display: flex;
+      align-items: center;
+    }
+
+    .first-column {
+      justify-content: flex-start;
+      gap: 20px;
+    }
+
+    .second-column {
+      justify-content: center;
+    }
+
+    .third-column {
+      justify-content: flex-end;
+      gap: 30px;
+    }
+
+    /* استایل لوگو */
+    .logo img {
+      height: 40px;
+      width: auto;
+    }
+
+    /* استایل منوها و لینک‌ها */
+    .nav-link {
+      position: relative;
+      cursor: pointer;
+      font-size: 16px;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #FFFF00;
+    }
+
+    .nav-link a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* استایل منوی آبشاری */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: #34495e;
+      min-width: 200px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      transition: background-color 0.3s;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #2c3e50;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* استایل دکمه‌های احراز هویت */
+    .auth-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .auth-button {
+      padding: 8px 20px;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .login {
+      background-color: transparent;
+      color: white;
+      border: 1px solid white;
+    }
+
+    .login:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .register {
+      background-color: #FFFF00;
+      color: #2c3e50;
+    }
+
+    .register:hover {
+      background-color: #e6e600;
+    }
+
+    /* استایل ریسپانسیو برای موبایل */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        padding: 15px;
+      }
+
+      .column {
+        width: 100%;
+        justify-content: center !important;
+        margin: 5px 0;
+      }
+
+      .first-column,
+      .third-column {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .auth-buttons {
+        justify-content: center;
+      }
+    }
+
+    header {
+      background-color: var(--blue-dark);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 5%;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      height: var(--header-height);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 120px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 50px;
+      color: white;
+      font-size: 24px;
+    }
+
+    .nav-link a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .menue {
+      display: flex;
+      justify-content: space-between;
+      color: white;
+    }
+
+    .nav-link {
+      position: relative;
+      cursor: pointer;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+
+    .nav-link:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 220px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      z-index: 1;
+      top: 100%;
+      right: 0;
+      padding: 10px 0;
+    }
+
+    .dropdown-content a {
+      color: #333;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f0f0f0;
+      color: var(--blue-dark);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .auth-buttons {
+      display: flex;
+      gap: 20px;
+    }
+
+    .auth-button {
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: large;
+    }
+
+    .login {
+      background-color: transparent;
+      border: 1px solid white;
+      color: white;
+    }
+
+    .login:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .register {
+      background-color: white;
+      border: 1px solid white;
+      color: var(--blue-dark);
+    }
+
+    .register:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* ===== نوار جستجوی تمام صفحه ===== */
+    .search-full-width {
+      position: relative;
+      background-color: var(--blue-light);
+      height: var(--search-height);
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      z-index: 900;
+    }
+
+    .search-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .search-box {
+      flex: 1;
+      display: flex;
+      background: white;
+      border-radius: 50px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      height: 50px;
+    }
+
+    .search-input {
+      flex: 1;
+      border: none;
+      padding: 0 20px;
+      font-size: 16px;
+      outline: none;
+      background: transparent;
+      color: #333;
+    }
+
+    .search-actions {
+      display: flex;
+    }
+
+    .search-btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0 25px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      transition: background 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .search-btn:hover {
+      background: #1fb155;
+    }
+
+    .filter-toggle-btn {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+      padding: 0 25px;
+      height: 50px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.3s;
+    }
+
+    .filter-toggle-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Slider Section */
+    .slider-container {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      margin: 20px 0;
+    }
+
+    .slider {
+      position: relative;
+      width: 100%;
+      height: 400px;
+    }
+
+    .slide {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition: opacity 0.5s;
+      opacity: 0;
+    }
+
+    .slide.active {
+      display: block;
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media (max-width: 700px) {
+      .slider {
+        height: 220px;
+      }
+
+      .slide img {
+        height: 220px;
+      }
+    }
+
+    .slider-nav {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+    }
+
+    .slider-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+    }
+
+    .slider-dot.active {
+      background-color: white;
+    }
+
+    .slider-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.4);
+      color: #fff;
+      border: none;
+      font-size: 2.2rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .slider-arrow:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .slider-arrow-right {
+      left: 16px;
+    }
+
+    .slider-arrow-left {
+      right: 16px;
+    }
+
+    /* ===== Filters / Chips ===== */
+    .filters {
+      position: sticky;
+      top: calc(var(--header-height) + var(--search-height));
+      z-index: 800;
+      background: white;
+      border-bottom: 1px solid #eee;
+      padding: 15px 0;
+    }
+
+    .chips {
+      display: flex;
+      gap: 10px;
+      overflow: auto;
+      padding: 12px 0;
+    }
+
+    .chip {
+      white-space: nowrap;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: var(--chip);
+      border: 1px solid var(--chip-br);
+      color: #cdd6e1;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .chip[aria-pressed="true"],
+    .chip:hover {
+      background: #1f232b;
+      border-color: #3a404a;
+    }
+
+    .tools {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown>button {
+      padding: 9px 12px;
+      border-radius: 10px;
+      background: #0f1116;
+      border: 1px solid #1f2430;
+      color: #cbd5e1;
+      cursor: pointer;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      inset-inline-start: 0;
+      top: 110%;
+      min-width: 220px;
+      background: #0f1116;
+      border: 1px solid #2a2f37;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      display: none;
+    }
+
+    .dropdown.open .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 10px 12px;
+      color: #d8e1ed;
+      text-decoration: none;
+    }
+
+    .dropdown-menu a:hover {
+      background: #131720;
+    }
+
+    /* ===== کشوی فیلتر ===== */
+    .filter-container {
+      position: fixed;
+
+      right: -320px;
+
+      height: 100vh;
+      background: white;
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+      transition: right 0.4s ease;
+      padding: 20px;
+      z-index: 1000;
+    }
+
+    .filter-container.active {
+      right: 0;
+    }
+
+    .filter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #777;
+    }
+
+    .close-btn:hover {
+      color: #333;
+    }
+
+    .filter-options {
+      padding: 20px 0;
+    }
+
+    .filter-group {
+      margin-bottom: 20px;
+    }
+
+    .filter-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .filter-group select,
+    .filter-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background: #f9f9f9;
+    }
+
+    .filter-actions {
+      display: flex;
+      gap: 10px;
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+    }
+
+    .filter-actions button {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .apply-btn {
+      background: var(--accent);
+      color: white;
+    }
+
+    .reset-btn {
+      background: #f44336;
+      color: white;
+    }
+
+    /* ===== Masonry Grid ===== */
+    .grid-wrap {
+      padding: 22px 0;
+    }
+
+    .masonry {
+      column-count: 1;
+      column-gap: 18px;
+    }
+
+    @media (min-width:700px) {
+      .masonry {
+        column-count: 2;
+      }
+    }
+
+    @media (min-width:1000px) {
+      .masonry {
+        column-count: 3;
+      }
+    }
+
+    @media (min-width:1280px) {
+      .masonry {
+        column-count: 4;
+      }
+    }
+
+    .card {
+      break-inside: avoid;
+      margin: 0 0 18px;
+      background: white;
+      border: 1px solid #eee;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .thumb {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .thumb img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: transform .6s ease;
+    }
+
+    .card:hover .thumb img {
+      transform: scale(1.04);
+    }
+
+    .badge {
+      position: absolute;
+      top: 10px;
+      inset-inline-end: 10px;
+      padding: 6px 10px;
+      font-size: 12px;
+      border-radius: 999px;
+      background: rgba(20, 24, 33, .6);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, .12);
+    }
+
+
+
+    .meta {
+      padding: 12px 14px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .title {
+      font-weight: 700;
+      color: #333;
+    }
+
+    .subtitle {
+      color: #666;
+      font-size: 13px;
+    }
+
+    .author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .author .pic {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #2a2f37;
+    }
+
+    .stats {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      color: #666;
+      font-size: 12px;
+    }
+
+    .stat {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 8px;
+      background: #f0f0f0;
+      border-radius: 10px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .filter-btn {
+      order: -1;
+    }
+
+    /* در RTL این باعث می‌شود دکمه در ابتدای سطر (سمت راست) قرار گیرد */
+    .brand {
+      font-weight: 900;
+      color: var(--primary)
+    }
+
+    .search {
+      position: relative;
+      flex: 1
+    }
+
+    .search input {
+      width: 100%;
+      height: 44px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0 44px 0 14px;
+      outline: none
+    }
+
+    .search input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px #003dff1f
+    }
+
+    .search svg {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      opacity: .6
+    }
+
+    .filter-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 3px solid var(--border);
+      height: 20px;
+      padding: 0 12px;
+      background: #fff;
+      cursor: pointer;
+      font-weight: 800;
+      border-radius: 20px
+    }
+
+    /* لایه محتوا */
+    .wrap {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      padding: 16px
+    }
+
+    .content {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px
+    }
+
+    .cards {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(3, minmax(0, 1fr))
+    }
+
+    @media(max-width:1200px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media(max-width:640px) {
+      .cards {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden
+    }
+
+    .thumb {
+      aspect-ratio: 16/10;
+      background: #f1f5f9
+    }
+
+    .meta {
+      padding: 8px
+    }
+
+    .meta .sub {
+      color: var(--muted);
+      font-size: 12px
+    }
+
+    .drawer {
+      position: fixed;
+      inset: 0;
+      display: none;
+      z-index: 40
+    }
+
+    .drawer.open {
+      display: block
+    }
+
+    .backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, .35)
+    }
+
+    .panel {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: min(360px, 90vw);
+      background: #fff;
+      border-left: 1px solid var(--border);
+      transform: translateX(100%);
+      transition: transform .25s ease;
+      display: flex;
+      flex-direction: column
+    }
+
+    .drawer.open .panel {
+      transform: translateX(0)
+    }
+
+    .panel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 12px;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .pill {
+      background: #eef2ff;
+      color: var(--primary);
+      border-radius: 999px;
+      padding: 2px 10px;
+      font-size: 12px;
+      font-weight: 800
+    }
+
+    .panel-body {
+      padding: 6px;
+      overflow: auto
+    }
+
+    /* آکاردئون */
+    .section {
+      border-top: 1px dashed var(--border)
+    }
+
+    .acc {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      padding: 14px 10px;
+      font-weight: 800
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 12px
+    }
+
+    .chev {
+      transform: rotate(180deg);
+      transition: .2s
+    }
+
+    .acc[aria-expanded="true"] .chev {
+      transform: rotate(0)
+    }
+
+    .panelx {
+      display: none;
+      padding: 0 10px 12px
+    }
+
+    .panelx.open {
+      display: block
+    }
+
+    .inside-search {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      margin-bottom: 8px
+    }
+
+    .inside-search input {
+      width: 100%;
+      height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0 10px
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 240px;
+      overflow: auto
+    }
+
+    .item {
+      display: flex;
+      gap: 10px;
+      align-items: center
+    }
+
+    .item input {
+      accent-color: var(--primary)
+    }
+
+    .row {
+      display: flex;
+      gap: px
+    }
+
+    select,
+    .input {
+      height: 36px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0 10px;
+      width: 100%
+    }
+
+    /* پالت رنگ */
+    .palette {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 6px
+    }
+
+    .swatch {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      border: 1px solid #0001;
+      cursor: pointer;
+      outline-offset: 2px
+    }
+
+    .swatch[aria-checked="true"] {
+      outline: 3px solid #0002
+    }
+
+    /* اکشن‌ها */
+    .actions {
+      display: flex;
+      gap: 8px;
+      padding: 12px;
+      border-top: 1px solid var(--border)
+    }
+
+    .btn {
+      height: 40px;
+      padding: 0 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #fff;
+      cursor: pointer;
+      font-weight: 800
+    }
+
+    .btn.primary {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff
+    }
+
+    .card-actions {
+      display: flex;
+      padding: 12px 14px;
+      border-top: 1px solid #eee;
+      gap: 10px;
+    }
+
+    .ghost {
+      flex: 1;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px dashed #ddd;
+      color: #333;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .ghost:hover {
+      border-color: var(--blue-light);
+      color: var(--blue-light);
+    }
+
+    .save {
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      background: white;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .save:hover {
+      background: #f0f0f0;
+    }
+
+    .save[aria-pressed="true"] {
+      border-color: var(--brand);
+      background: linear-gradient(135deg, #1f2937, #0f172a);
+    }
+
+    .load-more {
+      display: block;
+      margin: 26px auto 44px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #1f2937, #0b1220);
+      border: 1px solid #283042;
+      color: #dbe5f1;
+      cursor: pointer;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background-color: var(--blue-dark);
+      color: #eee;
+      padding: 40px 20px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: space-between;
+    }
+
+    .footer-column {
+      flex: 1 1 250px;
+      min-width: 220px;
+    }
+
+    .footer-column h4 {
+      margin-bottom: 15px;
+      font-weight: bold;
+      padding-bottom: 8px;
+      color: white;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-column ul li a {
+      color: #eee;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-column ul li a:hover {
+      color: yellow;
+    }
+
+    /* آیکون‌های شبکه اجتماعی */
+    .social-icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      background-color: white;
+      color: var(--blue-dark);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 36px;
+      font-size: 18px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .social-icons a:hover {
+      background-color: var(--blue-light);
+      color: white;
+    }
+
+    /* ریسپانسیو */
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .header-top {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 15px 0;
+        gap: 15px;
+      }
+
+      .auth-buttons {
+        margin-top: 15px;
+      }
+
+      .search-container {
+        flex-direction: column;
+        padding: 10px;
+      }
+
+      .search-box {
+        width: 100%;
+      }
+
+      .search-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .filter-toggle-btn,
+      .search-btn {
+        width: 48%;
+        justify-content: center;
+      }
+
+      .tools {
+        justify-content: center;
+      }
+
+      .masonry {
+        column-count: 1 !important;
+      }
+    }
+
+    /* ===== Utilities ===== */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .hide-mobile {
+      display: block;
+    }
+
+    .show-mobile {
+      display: none;
+    }
+
+    @media (max-width:800px) {
+      nav {
+        display: none;
+      }
+
+      .hide-mobile {
+        display: none;
+      }
+
+      .show-mobile {
+        display: inline-flex;
+      }
+
+      .chips {
+        padding-bottom: 6px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ====== Header ====== -->
+  <header class="header-container">
+    <!-- ستون اول - منوی فریلنسر و کارفرما -->
+    <div class="column first-column">
+      <div class="nav-link dropdown">
+        <span>فریلنسر هستم</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 6" width="15" height="15" fill="#FFFF00">
+          <path d="M3.75 0h-1.5v2.25H0v1.5h2.25V6h1.5V3.75H6v-1.5H3.75z"></path>
+          <path d="M3.75 0h-1.5v2.25H0v1.5h2.25V6h1.5V3.75H6v-1.5H3.75z"></path>
+        </svg>
+        <div class="dropdown-content">
+          <a href="#">راهنمای شروع برای فریلنسرها</a>
+          <a href="#">تعرفه‌ها</a>
+          <a href="#">اسنپ برند پلاس</a>
+        </div>
+      </div>
+
+      <div class="nav-link dropdown">
+        <span>کارفرما هستم</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 6" width="15" height="15" fill="#FFFF00">
+          <path d="M3.75 0h-1.5v2.25H0v1.5h2.25V6h1.5V3.75H6v-1.5H3.75z"></path>
+          <path d="M3.75 0h-1.5v2.25H0v1.5h2.25V6h1.5V3.75H6v-1.5H3.75z"></path>
+        </svg>
+        <div class="dropdown-content">
+          <a href="#">راهنمای شروع برای کارفرماها</a>
+          <a href="#">تعرفه‌ها</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ستون دوم - لوگو -->
+    <div class="column second-column">
+      <div class="logo">
+        <a href="#">
+          <img src="./assets/img/logo png 2_103307.png" alt="لوگو سایت">
+        </a>
+      </div>
+    </div>
+
+    <!-- ستون سوم - منوی اصلی و دکمه‌های ورود/ثبت‌نام -->
+    <div class="column third-column">
+      <div class="menue">
+        <div class="nav-link">
+          <a href="./index.html">خانه</a>
+        </div>
+        <div class="nav-link">
+          <a href="./shop.html">فروشگاه</a>
+        </div>
+      </div>
+
+      <div class="auth-buttons">
+        <a href="./login.html"><button class="auth-button login">ورود</button></a>
+        <a href="./Registration.html"><button class="auth-button register">ثبت‌نام</button></a>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- نوار جستجوی تمام صفحه -->
+
+
+  <!-- Slider Section -->
+  <div class="slider-container">
+    <div class="slider">
+      <div class="slide active">
+        <img src="./assets/img/form-2-bg-1.png" alt="اسلاید اول">
+      </div>
+      <div class="slide">
+        <img src="./assets/img/feature-5-thumb-1.jpg" alt="اسلاید دوم">
+      </div>
+      <div class="slide">
+        <img src="./assets/img/comming-soon-1.png" alt="اسلاید سوم">
+      </div>
+      <button class="slider-arrow slider-arrow-right" aria-label="بعدی">&#x203A;</button>
+      <button class="slider-arrow slider-arrow-left" aria-label="قبلی">&#x2039;</button>
+    </div>
+  </div>
+  <div class="search-full-width">
+    <div class="search-container">
+      <div class="topbar">
+        <button class="filter-btn" onclick="openFilters()">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" width="18" height="18">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h18M6 12h12M10 19h4" />
+          </svg>
+          فیلتر
+        </button>
+
+      </div>
+      <div id="drawer" class="drawer" aria-hidden="true">
+        <div class="backdrop" onclick="closeFilters()"></div>
+        <aside class="panel" role="dialog" aria-modal="true" aria-labelledby="filterTitle">
+          <div class="panel-head">
+            <div id="filterTitle"><strong>فیلترها</strong> <span class="pill" id="selCount">۰ انتخاب</span></div>
+            <button class="btn" onclick="closeFilters()">بستن ×</button>
+          </div>
+          <div class="panel-body" id="filterBody">
+            <div class="section">
+              <button class="acc" aria-expanded="false">
+                دسته‌بندی‌ها
+                <span class="note"></span>
+                <span class="chev">▾</span>
+              </button>
+              <div class="panelx">
+                <div class="inside-search"><input id="catSearch" placeholder="جستجو در دسته‌ها…"></div>
+                <div id="catList" class="list">
+                  <label class="item"><input type="checkbox" name="cat" value="طراحی گرافیک"> طراحی گرافیک</label>
+                  <label class="item"><input type="checkbox" name="cat" value="تصویرسازی و هنر دیجیتال"> تصویرسازی و هنر
+                    دیجیتال</label>
+                  <label class="item"><input type="checkbox" name="cat" value="ویدیو، موشن و انیمیشن"> ویدیو، موشن و
+                    انیمیشن</label>
+                  <label class="item"><input type="checkbox" name="cat" value="صدا و موسیقی"> صدا و موسیقی</label>
+                  <label class="item"><input type="checkbox" name="cat" value="کپی‌رایتینگ"> کپی‌رایتینگ</label>
+                  <label class="item"><input type="checkbox" name="cat" value="مدیریت شبکه‌های اجتماعی و تولید محتوا">
+                    مدیریت شبکه‌های اجتماعی و تولید محتوا</label>
+                  <label class="item"><input type="checkbox" name="cat" value="طراحی و توسعه وب‌سایت"> طراحی و توسعه
+                    وب‌سایت</label>
+                  <label class="item"><input type="checkbox" name="cat" value="برنامه‌نویسی و توسعه نرم‌افزار">
+                    برنامه‌نویسی و توسعه نرم‌افزار</label>
+                  <label class="item"><input type="checkbox" name="cat" value="هوش مصنوعی و علم داده"> هوش مصنوعی و علم
+                    داده</label>
+                  <label class="item"><input type="checkbox" name="cat" value="سئو و بازاریابی دیجیتال"> سئو و بازاریابی
+                    دیجیتال</label>
+                  <label class="item"><input type="checkbox" name="cat" value="عکاسی"> عکاسی</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="section">
+              <button class="acc" aria-expanded="false">
+                وضعیت همکاری
+                <span class="chev">▾</span>
+              </button>
+              <div class="panelx">
+                <label class="item"><input type="radio" name="availability" value="" checked> همه</label>
+                <label class="item"><input type="radio" name="availability" value="تمام‌وقت"> تمام‌وقت</label>
+                <label class="item"><input type="radio" name="availability" value="پروژه‌ای / فریلنس"> پروژه‌ای /
+                  فریلنس</label>
+              </div>
+            </div>
+
+            <div class="section">
+              <button class="acc" aria-expanded="false">
+                موقعیت مکانی
+                <span class="chev">▾</span>
+              </button>
+              <div class="panelx">
+                <div class="row">
+                  <select id="country" class="input">
+                    <option value="">انتخاب کشور/منطقه</option>
+                    <option>ایران</option>
+                    <option>ترکیه</option>
+                    <option>امارات</option>
+                    <option>کانادا</option>
+                    <option>آلمان</option>
+                  </select>
+                </div>
+                <div class="row" style="margin-top:8px">
+                  <input id="city" class="input" placeholder="شهر">
+                </div>
+              </div>
+            </div>
+
+            <div class="section">
+              <button class="acc" aria-expanded="false">
+                ابزارها و اپ‌ها
+                <span class="note"></span>
+                <span class="chev">▾</span>
+              </button>
+              <div class="panelx">
+                <div class="inside-search"><input id="toolSearch" placeholder="جستجو در ابزارها…"></div>
+                <div id="toolList" class="list">
+                  <label class="item"><input type="checkbox" name="tool" value="Adobe Photoshop"> Adobe
+                    Photoshop</label><label class="item"><input type="checkbox" name="tool" value="Adobe Illustrator">
+                    Adobe Illustrator</label><label class="item"><input type="checkbox" name="tool"
+                      value="Adobe InDesign"> Adobe InDesign</label><label class="item"><input type="checkbox"
+                      name="tool" value="Adobe After Effects"> Adobe After Effects</label><label class="item"><input
+                      type="checkbox" name="tool" value="Adobe Premiere Pro"> Adobe Premiere Pro</label><label
+                    class="item"><input type="checkbox" name="tool" value="Adobe Lightroom"> Adobe
+                    Lightroom</label><label class="item"><input type="checkbox" name="tool" value="Adobe Audition">
+                    Adobe Audition</label><label class="item"><input type="checkbox" name="tool" value="Adobe XD"> Adobe
+                    XD</label><label class="item"><input type="checkbox" name="tool" value="Figma"> Figma</label><label
+                    class="item"><input type="checkbox" name="tool" value="Sketch"> Sketch</label><label
+                    class="item"><input type="checkbox" name="tool" value="Canva"> Canva</label><label
+                    class="item"><input type="checkbox" name="tool" value="CorelDRAW"> CorelDRAW</label><label
+                    class="item"><input type="checkbox" name="tool" value="Affinity Designer"> Affinity
+                    Designer</label><label class="item"><input type="checkbox" name="tool" value="Affinity Photo">
+                    Affinity Photo</label><label class="item"><input type="checkbox" name="tool" value="Procreate">
+                    Procreate</label><label class="item"><input type="checkbox" name="tool" value="Clip Studio Paint">
+                    Clip Studio Paint</label><label class="item"><input type="checkbox" name="tool" value="Krita">
+                    Krita</label><label class="item"><input type="checkbox" name="tool" value="Blender">
+                    Blender</label><label class="item"><input type="checkbox" name="tool" value="Cinema 4D"> Cinema
+                    4D</label><label class="item"><input type="checkbox" name="tool" value="Autodesk 3ds Max"> Autodesk
+                    3ds Max</label><label class="item"><input type="checkbox" name="tool" value="Autodesk Maya">
+                    Autodesk Maya</label><label class="item"><input type="checkbox" name="tool" value="DaVinci Resolve">
+                    DaVinci Resolve</label><label class="item"><input type="checkbox" name="tool" value="CapCut">
+                    CapCut</label><label class="item"><input type="checkbox" name="tool" value="Final Cut Pro"> Final
+                    Cut Pro</label><label class="item"><input type="checkbox" name="tool" value="Audacity">
+                    Audacity</label><label class="item"><input type="checkbox" name="tool" value="FL Studio"> FL
+                    Studio</label><label class="item"><input type="checkbox" name="tool" value="Logic Pro X"> Logic Pro
+                    X</label><label class="item"><input type="checkbox" name="tool" value="GarageBand">
+                    GarageBand</label><label class="item"><input type="checkbox" name="tool" value="Notion">
+                    Notion</label><label class="item"><input type="checkbox" name="tool" value="Trello">
+                    Trello</label><label class="item"><input type="checkbox" name="tool" value="Jira">
+                    Jira</label><label class="item"><input type="checkbox" name="tool" value="Slack">
+                    Slack</label><label class="item"><input type="checkbox" name="tool" value="GitHub">
+                    GitHub</label><label class="item"><input type="checkbox" name="tool" value="GitLab">
+                    GitLab</label><label class="item"><input type="checkbox" name="tool"
+                      value="Visual Studio Code (VS Code)"> Visual Studio Code (VS Code)</label><label
+                    class="item"><input type="checkbox" name="tool" value="Android Studio"> Android Studio</label><label
+                    class="item"><input type="checkbox" name="tool" value="Xcode"> Xcode</label><label
+                    class="item"><input type="checkbox" name="tool" value="IntelliJ IDEA"> IntelliJ IDEA</label><label
+                    class="item"><input type="checkbox" name="tool" value="PyCharm"> PyCharm</label><label
+                    class="item"><input type="checkbox" name="tool" value="WebStorm"> WebStorm</label><label
+                    class="item"><input type="checkbox" name="tool" value="Postman"> Postman</label><label
+                    class="item"><input type="checkbox" name="tool" value="Insomnia"> Insomnia</label><label
+                    class="item"><input type="checkbox" name="tool" value="WordPress"> WordPress</label><label
+                    class="item"><input type="checkbox" name="tool" value="Elementor"> Elementor</label><label
+                    class="item"><input type="checkbox" name="tool" value="Webflow"> Webflow</label><label
+                    class="item"><input type="checkbox" name="tool" value="Wix"> Wix</label><label class="item"><input
+                      type="checkbox" name="tool" value="Jupyter Notebook"> Jupyter Notebook</label><label
+                    class="item"><input type="checkbox" name="tool" value="Google Colab"> Google Colab</label><label
+                    class="item"><input type="checkbox" name="tool" value="TensorFlow"> TensorFlow</label><label
+                    class="item"><input type="checkbox" name="tool" value="PyTorch"> PyTorch</label><label
+                    class="item"><input type="checkbox" name="tool" value="Power BI"> Power BI</label><label
+                    class="item"><input type="checkbox" name="tool" value="Tableau"> Tableau</label><label
+                    class="item"><input type="checkbox" name="tool" value="Google Analytics"> Google
+                    Analytics</label><label class="item"><input type="checkbox" name="tool"
+                      value="Google Search Console"> Google Search Console</label><label class="item"><input
+                      type="checkbox" name="tool" value="Ahrefs"> Ahrefs</label><label class="item"><input
+                      type="checkbox" name="tool" value="Mailchimp"> Mailchimp</label><label class="item"><input
+                      type="checkbox" name="tool" value="HubSpot"> HubSpot</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="section">
+              <button class="acc" aria-expanded="false">
+                رنگ غالب
+                <span class="chev">▾</span>
+              </button>
+              <div class="panelx">
+                <div id="palette" class="palette"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn" onclick="resetFilters()">حذف فیلترها</button>
+            <button class="btn primary" onclick="applyFilters()">اعمال فیلتر</button>
+          </div>
+        </aside>
+      </div>
+      <div class="search-box">
+        <input type="text" class="search-input" placeholder="جستجو در پروژه‌ها، مهارت‌ها، طراحان و...">
+      </div>
+
+      
+    </div>
+  </div>
+
+  <!-- کشوی فیلتر -->
+  <div class="filter-container" id="filterDrawer">
+
+
+    <div class="filter-options">
+      <div class="filter-group">
+        <label for="category">دسته‌بندی</label>
+        <select id="category">
+          <option value="">همه دسته‌بندی‌ها</option>
+          <option value="ui-ux">UI/UX</option>
+          <option value="illustration">تصویرسازی</option>
+          <option value="photography">عکاسی</option>
+          <option value="motion">موشن</option>
+          <option value="branding">برندسازی</option>
+          <option value="3d">سه‌بعدی</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="price-range">محدوده قیمت</label>
+        <select id="price-range">
+          <option value="">همه قیمت‌ها</option>
+          <option value="low">تا 5 میلیون تومان</option>
+          <option value="medium">5 تا 15 میلیون تومان</option>
+          <option value="high">بالای 15 میلیون تومان</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="date">تاریخ انتشار</label>
+        <input type="date" id="date">
+      </div>
+
+      <div class="filter-group">
+        <label>
+          <input type="checkbox" id="pro-only">
+          فقط حرفه‌ای‌ها
+        </label>
+      </div>
+    </div>
+
+    <div class="filter-actions">
+      <button class="reset-btn" onclick="resetFilters()">حذف فیلتر</button>
+      <button class="apply-btn" onclick="applyFilters()">اعمال فیلتر</button>
+    </div>
+  </div>
+
+  <!-- بخش فیلترها -->
+  <div class="filters">
+    <div class="container">
+      <div class="tools">
+        <div class="dropdown" data-dropdown>
+          <button aria-haspopup="menu" aria-expanded="false">همه ▾</button>
+          <div class="dropdown-menu" role="menu">
+            <a href="#" role="menuitem">Figma</a>
+            <a href="#" role="menuitem">Adobe Photoshop</a>
+            <a href="#" role="menuitem">Illustrator</a>
+            <a href="#" role="menuitem">Blender</a>
+          </div>
+        </div>
+        <div class="dropdown" data-dropdown>
+          <button aria-haspopup="menu" aria-expanded="false">UI/UX ▾</button>
+          <div class="dropdown-menu" role="menu">
+            <a role="menuitem" href="#">طراحی سایت وردپرس</a>
+            <a role="menuitem" href="#">طراحی سایت Webflow یا Wix</a>
+            <a role="menuitem" href="#">طراحی فروشگاه اینترنتی</a>
+            <a role="menuitem" href="#">طراحی لندینگ‌پیج</a>
+            <a role="menuitem" href="#">پشتیبانی سایت</a>
+          </div>
+        </div>
+        <div class="dropdown" data-dropdown>
+          <button aria-haspopup="menu" aria-expanded="false">تصویرسازی ▾</button>
+          <div class="dropdown-menu" role="menu">
+            <a href="#" role="menuitem">تصویرسازی کتاب کودک</a>
+            <a href="#" role="menuitem">تصویرسازی تبلیغاتی</a>
+            <a href="#" role="menuitem">طراحی NFT</a>
+            <a href="#" role="menuitem">کاراکتر دیزاین</a>
+            <a href="#" role="menuitem">آرت کانسپت (برای بازی و انیمیشن)</a>
+          </div>
+        </div>
+        <div class="dropdown" data-dropdown>
+          <button aria-haspopup="menu" aria-expanded="false">عکاسی ▾</button>
+          <div class="dropdown-menu" role="menu">
+            <a role="menuitem" href="#">جهانی</a>
+            <a role="menuitem" href="#">تهران</a>
+            <a role="menuitem" href="#">استانبول</a>
+            <a role="menuitem" href="#">هلسینکی</a>
+          </div>
+        </div>
+        <div class="dropdown" data-dropdown>
+          <button aria-haspopup="menu" aria-expanded="false">موشن ▾</button>
+          <div class="dropdown-menu" role="menu">
+            <a href="#" role="menuitem">Figma</a>
+            <a href="#" role="menuitem">Adobe Photoshop</a>
+            <a href="#" role="menuitem">Illustrator</a>
+            <a href="#" role="menuitem">Blender</a>
+          </div>
+        </div>
+        <div class="dropdown" data-dropdown>
+          <button aria-haspopup="menu" aria-expanded="false">برندسازی ▾</button>
+          <div class="dropdown-menu" role="menu">
+            <a role="menuitem" href="#">جهانی</a>
+            <a role="menuitem" href="#">تهران</a>
+            <a role="menuitem" href="#">استانبول</a>
+            <a role="menuitem" href="#">هلسینکی</a>
+          </div>
+        </div>
+        <div class="dropdown" data-dropdown>
+          <button aria-haspopup="menu" aria-expanded="false">سه‌بعدی ▾</button>
+          <div class="dropdown-menu" role="menu">
+            <a href="#" role="menuitem">Figma</a>
+            <a href="#" role="menuitem">Adobe Photoshop</a>
+            <a href="#" role="menuitem">Illustrator</a>
+            <a href="#" role="menuitem">Blender</a>
+          </div>
+        </div>
+        <div class="dropdown" data-dropdown>
+          <button aria-haspopup="menu" aria-expanded="false">هنر مفهومی ▾</button>
+          <div class="dropdown-menu" role="menu">
+            <a role="menuitem" href="#">جهانی</a>
+            <a role="menuitem" href="#">تهران</a>
+            <a role="menuitem" href="#">استانبول</a>
+            <a role="menuitem" href="#">هلسینکی</a>
+          </div>
+        </div>
+        <div class="dropdown" data-dropdown>
+          <button aria-haspopup="menu" aria-expanded="false">تایپوگرافی ▾</button>
+          <div class="dropdown-menu" role="menu">
+            <a href="#" role="menuitem">Figma</a>
+            <a href="#" role="menuitem">Adobe Photoshop</a>
+            <a href="#" role="menuitem">Illustrator</a>
+            <a href="#" role="menuitem">Blender</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tools">
+      <div class="dropdown" data-dropdown>
+        <button aria-haspopup="menu" aria-expanded="false">ابزارها ▾</button>
+        <div class="dropdown-menu" role="menu">
+          <a href="#" role="menuitem">Figma</a>
+          <a href="#" role="menuitem">Adobe Photoshop</a>
+          <a href="#" role="menuitem">Illustrator</a>
+          <a href="#" role="menuitem">Blender</a>
+        </div>
+      </div>
+      <div class="dropdown" data-dropdown>
+        <button aria-haspopup="menu" aria-expanded="false">موقعیت ▾</button>
+        <div class="dropdown-menu" role="menu">
+          <a role="menuitem" href="#">جهانی</a>
+          <a role="menuitem" href="#">تهران</a>
+          <a role="menuitem" href="#">استانبول</a>
+          <a role="menuitem" href="#">هلسینکی</a>
+        </div>
+      </div>
+      <button class="chip" title="نمایش فقط حرفه‌ای‌ها">Pro ✦</button>
+      <button class="chip" title="سفارشات باز">پروژه‌های درحال جذب</button>
+    </div>
+  </div>
+
+  <main class="container">
+    <h1 class="sr-only">گالری آثار از طراحان سراسر جهان</h1>
+    <section class="grid-wrap" aria-label="لیست پروژه‌ها">
+      <div id="masonry" class="masonry">
+        <!-- ===== Card Template x12 ===== -->
+        <article class="card">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1529101091764-c3526daf38fe?q=80&w=1887&auto=format&fit=crop"
+              alt="داشبورد موبایل با تم تیره" loading="lazy" />
+            <span class="badge">UI/UX</span>
+          </div>
+          <div class="meta">
+            <div class="title">داشبورد فین‌تک — کیت طراحی موبایل</div>
+            <div class="subtitle">طراحی رابط با تمرکز بر تایپوگرافی خوانا و نمودارهای ساده</div>
+            <div class="author">
+              <span class="pic" aria-hidden="true"></span>
+              <div>
+                <div style="font-weight:600">Studio Nebula</div>
+                <div class="note">تهران · ایران</div>
+              </div>
+            </div>
+            <div class="stats">
+              <span class="stat" aria-label="پسندها"><span>❤</span> <span>1.2k</span></span>
+              <span class="stat" aria-label="بازدید"><span>👁</span> <span>34k</span></span>
+            </div>
+          </div>
+          <div class="card-actions">
+            <button class="ghost">نمایش پروژه</button>
+            <button class="save" aria-pressed="false">ذخیره</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1887&auto=format&fit=crop"
+              alt="وبسایت مینیمال روی لپتاپ" loading="lazy" />
+            <span class="badge">وب</span>
+          </div>
+          <div class="meta">
+            <div class="title">قالب مینیمال آژانس خلاق</div>
+            <div class="subtitle">شبکه 12 ستونه، فاصله‌گذاری منظم و کارت‌های شفاف</div>
+            <div class="author"><span class="pic"></span>
+              <div>
+                <div style="font-weight:600">Azar Design</div>
+                <div class="note">تبریز · ایران</div>
+              </div>
+            </div>
+            <div class="stats"><span class="stat">❤ 846</span><span class="stat">👁 21k</span></div>
+          </div>
+          <div class="card-actions"><button class="ghost">نمایش پروژه</button><button class="save">ذخیره</button></div>
+        </article>
+
+        <article class="card">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?q=80&w=1887&auto=format&fit=crop"
+              alt="صحنه سه‌بعدی با نورپردازی" loading="lazy" />
+            <span class="badge">۳بعدی</span>
+          </div>
+          <div class="meta">
+            <div class="title">نورپردازی واقع‌گرایانه — صحنه داخلی</div>
+            <div class="subtitle">رندر PBR با تمرکز بر متریال‌های طبیعی</div>
+            <div class="author"><span class="pic"></span>
+              <div>
+                <div style="font-weight:600">Renderly</div>
+                <div class="note">استانبول · ترکیه</div>
+              </div>
+            </div>
+            <div class="stats"><span class="stat">❤ 2.1k</span><span class="stat">👁 57k</span></div>
+          </div>
+          <div class="card-actions"><button class="ghost">نمایش پروژه</button><button class="save">ذخیره</button></div>
+        </article>
+
+        <article class="card">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1887&auto=format&fit=crop"
+              alt="پوستر هنری با تایپوگرافی" loading="lazy" />
+            <span class="badge">برندسازی</span>
+          </div>
+          <div class="meta">
+            <div class="title">هویت بصری — نمایشگاه تایپو</div>
+            <div class="subtitle">پالت جسورانه و گرید مدولار برای پوسترها</div>
+            <div class="author"><span class="pic"></span>
+              <div>
+                <div style="font-weight:600">Type&Co</div>
+                <div class="note">پاریس · فرانسه</div>
+              </div>
+            </div>
+            <div class="stats"><span class="stat">❤ 992</span><span class="stat">👁 18k</span></div>
+          </div>
+          <div class="card-actions"><button class="ghost">نمایش پروژه</button><button class="save">ذخیره</button></div>
+        </article>
+
+        <article class="card">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1441986380878-c4248f5b8b5b?q=80&w=1887&auto=format&fit=crop"
+              alt="گرید کارت‌های محصول" loading="lazy" />
+            <span class="badge">تجارت الکترونیک</span>
+          </div>
+          <div class="meta">
+            <div class="title">کارت‌های محصول — طراحی فروشگاه</div>
+            <div class="subtitle">تمرکز بر نسبت تصویر، قیمت و CTA های واضح</div>
+            <div class="author"><span class="pic"></span>
+              <div>
+                <div style="font-weight:600">Cafina Studio</div>
+                <div class="note">تهران · ایران</div>
+              </div>
+            </div>
+            <div class="stats"><span class="stat">❤ 1.1k</span><span class="stat">👁 29k</span></div>
+          </div>
+          <div class="card-actions"><button class="ghost">نمایش پروژه</button><button class="save">ذخیره</button></div>
+        </article>
+
+        <article class="card">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1887&auto=format&fit=crop"
+              alt="تصویرسازی رنگی" loading="lazy" />
+            <span class="badge">تصویرسازی</span>
+          </div>
+          <div class="meta">
+            <div class="title">سری ایلوستریشن — شهر آینده</div>
+            <div class="subtitle">پالت نئونی، ترکیب‌بندی دینامیک</div>
+            <div class="author"><span class="pic"></span>
+              <div>
+                <div style="font-weight:600">Nava</div>
+                <div class="note">رُم · ایتالیا</div>
+              </div>
+            </div>
+            <div class="stats"><span class="stat">❤ 760</span><span class="stat">👁 16k</span></div>
+          </div>
+          <div class="card-actions"><button class="ghost">نمایش پروژه</button><button class="save">ذخیره</button></div>
+        </article>
+
+        <!-- Duplicate a few for visual mass -->
+        <article class="card">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1887&auto=format&fit=crop"
+              alt="کدنویسی روی نمایشگر" loading="lazy" />
+            <span class="badge">کدنویسی</span>
+          </div>
+          <div class="meta">
+            <div class="title">کیت UI توسعه‌دهندگان</div>
+            <div class="subtitle">کامپوننت‌های تیره با کد تمیز</div>
+            <div class="author"><span class="pic"></span>
+              <div>
+                <div style="font-weight:600">DevSet</div>
+                <div class="note">برلین · آلمان</div>
+              </div>
+            </div>
+            <div class="stats"><span class="stat">❤ 540</span><span class="stat">👁 12k</span></div>
+          </div>
+          <div class="card-actions"><button class="ghost">نمایش پروژه</button><button class="save">ذخیره</button></div>
+        </article>
+
+        <article class="card">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1887&auto=format&fit=crop"
+              alt="اکسپلور موشن گرافیک" loading="lazy" />
+            <span class="badge">موشن</span>
+          </div>
+          <div class="meta">
+            <div class="title">تایتل‌های سینمایی — Opener</div>
+            <div class="subtitle">کی‌فریم نرم و افکت گلیچ مینیمال</div>
+            <div class="author"><span class="pic"></span>
+              <div>
+                <div style="font-weight:600">Motionary</div>
+                <div class="note">باکو · آذربایجان</div>
+              </div>
+            </div>
+            <div class="stats"><span class="stat">❤ 680</span><span class="stat">👁 14k</span></div>
+          </div>
+          <div class="card-actions"><button class="ghost">نمایش پروژه</button><button class="save">ذخیره</button></div>
+        </article>
+
+        <article class="card">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1887&auto=format&fit=crop"
+              alt="برد توسعه و الکترونیک" loading="lazy" />
+            <span class="badge">IoT</span>
+          </div>
+          <div class="meta">
+            <div class="title">UI برای داشبورد IoT</div>
+            <div class="subtitle">نمودارهای Real-time و مانیتورینگ</div>
+            <div class="author"><span class="pic"></span>
+              <div>
+                <div style="font-weight:600">Circuits Lab</div>
+                <div class="note">هلسینکی · فنلاند</div>
+              </div>
+            </div>
+            <div class="stats"><span class="stat">❤ 412</span><span class="stat">👁 9k</span></div>
+          </div>
+          <div class="card-actions"><button class="ghost">نمایش پروژه</button><button class="save">ذخیره</button></div>
+        </article>
+
+        <article class="card">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1496042399019-ab68de25d43d?q=80&w=1887&auto=format&fit=crop"
+              alt="محصول فیزیکی و بسته‌بندی" loading="lazy" />
+            <span class="badge">محصول</span>
+          </div>
+          <div class="meta">
+            <div class="title">طراحی بسته‌بندی — سری نوشیدنی</div>
+            <div class="subtitle">فویل متالیک و چاپ برجسته</div>
+            <div class="author"><span class="pic"></span>
+              <div>
+                <div style="font-weight:600">Packly</div>
+                <div class="note">ورشو · لهستان</div>
+              </div>
+            </div>
+            <div class="stats"><span class="stat">❤ 1.6k</span><span class="stat">👁 41k</span></div>
+          </div>
+          <div class="card-actions"><button class="ghost">نمایش پروژه</button><button class="save">ذخیره</button></div>
+        </article>
+
+        <article class="card">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1887&auto=format&fit=crop"
+              alt="عکاسی محصول با پس‌زمینه تیره" loading="lazy" />
+            <span class="badge">عکاسی</span>
+          </div>
+          <div class="meta">
+            <div class="title">لایتینگ استودیویی — سری مینیمال</div>
+            <div class="subtitle">کنتراست کنترل‌شده، سایه‌های نرم</div>
+            <div class="author"><span class="pic"></span>
+              <div>
+                <div style="font-weight:600">Frame Lab</div>
+                <div class="note">مسکو · روسیه</div>
+              </div>
+            </div>
+            <div class="stats"><span class="stat">❤ 530</span><span class="stat">👁 11k</span></div>
+          </div>
+          <div class="card-actions"><button class="ghost">نمایش پروژه</button><button class="save">ذخیره</button></div>
+        </article>
+
+        <article class="card">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=1887&auto=format&fit=crop"
+              alt="صفحه داشبورد با کارت‌های داده" loading="lazy" />
+            <span class="badge">داشبورد</span>
+          </div>
+          <div class="meta">
+            <div class="title">Design System — Dashboard</div>
+            <div class="subtitle">دکمه‌ها، چک‌باکس‌ها و جدول‌های واکنش‌گرا</div>
+            <div class="author"><span class="pic"></span>
+              <div>
+                <div style="font-weight:600">DataKit</div>
+                <div class="note">آمستردام · هلند</div>
+              </div>
+            </div>
+            <div class="stats"><span class="stat">❤ 1.3k</span><span class="stat">👁 33k</span></div>
+          </div>
+          <div class="card-actions"><button class="ghost">نمایش پروژه</button><button class="save">ذخیره</button></div>
+        </article>
+
+        <article class="card">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1512295767273-ac109ac3acfa?q=80&w=1887&auto=format&fit=crop"
+              alt="کتابچه برند" loading="lazy" />
+            <span class="badge">هویت برند</span>
+          </div>
+          <div class="meta">
+            <div class="title">Brand Book — خطوط راهنما</div>
+            <div class="subtitle">شبکه لوگو، رنگ‌ها و کاربرد در رسانه‌ها</div>
+            <div class="author"><span class="pic"></span>
+              <div>
+                <div style="font-weight:600">Atlas Studio</div>
+                <div class="note">کی‌یف · اوکراین</div>
+              </div>
+            </div>
+            <div class="stats"><span class="stat">❤ 720</span><span class="stat">👁 17k</span></div>
+          </div>
+          <div class="card-actions"><button class="ghost">نمایش پروژه</button><button class="save">ذخیره</button></div>
+        </article>
+
+      </div>
+      <button id="loadMore" class="load-more">بارگذاری بیشتر</button>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <!-- ستون اول -->
+      <div class="footer-column">
+        <ul>
+          <li><a href="#">داشبورد فریلنسر و کارفرما</a></li>
+          <li><a href="#">پلن های همکاری</a></li>
+          <li><a href="#">نظرات کاربران</a></li>
+        </ul>
+      </div>
+
+      <!-- ستون دوم -->
+      <div class="footer-column">
+        <ul>
+          <li><a href="#">فروشگاه</a></li>
+          <li><a href="#">درباره ما</a></li>
+          <li><a href="#">تماس با ما</a></li>
+          <li><a href="#">وبلاگ</a></li>
+        </ul>
+      </div>
+
+      <!-- ستون سوم -->
+      <div class="footer-column">
+        <h4>شبکه‌های اجتماعی</h4>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const drawer = document.getElementById('drawer');
+    function openFilters() { drawer.classList.add('open'); drawer.setAttribute('aria-hidden', 'false'); }
+    function closeFilters() { drawer.classList.remove('open'); drawer.setAttribute('aria-hidden', 'true'); }
+    function doSearch(e) { if (e) e.preventDefault(); alert('جستجو انجام شد (دمو).'); }
+
+    document.querySelectorAll('.acc').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', !open);
+        btn.nextElementSibling.classList.toggle('open', !open);
+      });
+    });
+
+    function attachFilter(inputId, listId) {
+      const inp = document.getElementById(inputId), list = document.getElementById(listId);
+      if (!inp) return;
+      inp.addEventListener('input', () => {
+        const v = inp.value.trim().toLowerCase();
+        [...list.querySelectorAll('.item')].forEach(el => { el.style.display = el.textContent.toLowerCase().includes(v) ? '' : 'none'; });
+      });
+    }
+    attachFilter('catSearch', 'catList');
+    attachFilter('toolSearch', 'toolList');
+
+    const colors = ["#000000", "#434343", "#666666", "#999999", "#b7b7b7", "#cccccc", "#d9d9d9", "#efefef", "#f3f3f3", "#ffffff",
+      "#980000", "#ff0000", "#ff9900", "#ffff00", "#00ff00", "#00ffff", "#4a86e8", "#0000ff", "#9900ff", "#ff00ff",
+      "#e6b8af", "#f4cccc", "#fce5cd", "#fff2cc", "#d9ead3", "#d0e0e3", "#c9daf8", "#cfe2f3", "#d9d2e9", "#ead1dc",
+      "#dd7e6b", "#ea9999", "#f9cb9c", "#ffe599", "#b6d7a8", "#a2c4c9", "#a4c2f4", "#9fc5e8", "#b4a7d6", "#d5a6bd",
+      "#cc4125", "#e06666", "#f6b26b", "#ffd966", "#93c47d", "#76a5af", "#6d9eeb", "#6fa8dc", "#8e7cc3", "#c27ba0",
+      "#a61c00", "#cc0000", "#e69138", "#f1c232", "#6aa84f", "#45818e", "#3c78d8", "#3d85c6", "#674ea7", "#a64d79"];
+    const pal = document.getElementById('palette');
+    colors.forEach(c => { const b = document.createElement('button'); b.type = 'button'; b.className = 'swatch'; b.style.background = c; b.dataset.color = c; b.title = c; b.setAttribute('aria-checked', 'false'); pal.appendChild(b); });
+    let selectedColor = '';
+    pal.addEventListener('click', (e) => {
+      const sw = e.target.closest('.swatch'); if (!sw) return;
+      [...pal.children].forEach(x => x.setAttribute('aria-checked', 'false'));
+      if (selectedColor === sw.dataset.color) { selectedColor = ''; sw.setAttribute('aria-checked', 'false'); }
+      else { selectedColor = sw.dataset.color; sw.setAttribute('aria-checked', 'true'); }
+    });
+
+    function collect() {
+      const cats = [...document.querySelectorAll('input[name="cat"]:checked')].map(i => i.value);
+      const availability = (document.querySelector('input[name="availability"]:checked') || {}).value || '';
+      const tools = [...document.querySelectorAll('input[name="tool"]:checked')].map(i => i.value);
+      const country = document.getElementById('country').value; const city = document.getElementById('city').value.trim();
+      return { cats, availability, tools, country, city, color: selectedColor, q: document.getElementById('q').value.trim() };
+    }
+    function resetFilters() {
+      document.querySelectorAll('input[name="cat"],input[name="tool"]').forEach(i => i.checked = false);
+      document.querySelector('input[name="availability"][value=""]').checked = true;
+      document.getElementById('country').value = ''; document.getElementById('city').value = '';
+      selectedColor = '';[...pal.children].forEach(x => x.setAttribute('aria-checked', 'false'));
+    }
+    function applyFilters() { const f = collect(); console.log('APPLY FILTERS', f); closeFilters(); alert('فیلترها اعمال شد (دمو).'); }
+    // accordion
+    document.querySelectorAll('.accordion').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', !open);
+        btn.nextElementSibling.classList.toggle('open', !open);
+      });
+    });
+
+    // inside search for categories/tools
+    function attachFilter(inputId, listId) {
+      const inp = document.getElementById(inputId);
+      const list = document.getElementById(listId);
+      inp.addEventListener('input', () => {
+        const v = inp.value.trim();
+        [...list.querySelectorAll('.item')].forEach(el => {
+          const t = el.textContent.trim();
+          el.style.display = t.includes(v) ? '' : 'none';
+        });
+      });
+    }
+    attachFilter('catSearch', 'catList');
+    attachFilter('toolSearch', 'toolList');
+
+
+
+    // update counts & active chips
+    function collect() {
+      const q = document.getElementById('q').value.trim();
+      const cats = [...document.querySelectorAll('input[name="cat"]:checked')].map(i => i.value);
+      const avail = (document.querySelector('input[name="availability"]:checked') || {}).value || '';
+      const tools = [...document.querySelectorAll('input[name="tool"]:checked')].map(i => i.value);
+      const country = document.getElementById('country').value;
+      const city = document.getElementById('city').value.trim();
+      const color = selectedColor;
+      return { q, cats, avail, tools, country, city, color };
+    }
+    function updateCount() {
+      const f = collect();
+      const total = f.cats.length + f.tools.length + (f.avail ? 1 : 0) + (f.country ? 1 : 0) + (f.city ? 1 : 0) + (f.color ? 1 : 0) + (f.q ? 1 : 0);
+      document.getElementById('selCount').textContent = new Intl.NumberFormat('fa-IR').format(total) + ' انتخاب';
+    }
+    function updateActive() {
+      updateCount();
+      const wrap = document.getElementById('activeFilters'); wrap.innerHTML = '';
+      const f = collect();
+      function chip(label, clearFn) {
+        const el = document.createElement('span');
+        el.className = 'af-chip'; el.innerHTML = label + '<button title="x">×</button>';
+        el.querySelector('button').onclick = clearFn; wrap.appendChild(el);
+      }
+      f.q && chip('جستجو: ' + f.q, () => { document.getElementById('q').value = ''; updateActive(); });
+      f.cats.forEach(v => chip(v, () => { document.querySelector('input[name="cat"][value="' + v + '"]').checked = false; updateActive(); }));
+      f.avail && chip(f.avail, () => { document.querySelector('input[name="availability"][value=""]').checked = true; updateActive(); });
+      f.tools.forEach(v => chip(v, () => { document.querySelector('input[name="tool"][value="' + v + '"]').checked = false; updateActive(); }));
+      f.country && chip('کشور: ' + f.country, () => { document.getElementById('country').value = ''; updateActive(); });
+      f.city && chip('شهر: ' + f.city, () => { document.getElementById('city').value = ''; updateActive(); });
+      f.color && chip('رنگ: ' + f.color, () => { selectedColor = '';[...document.getElementById('palette').children].forEach(x => x.setAttribute('aria-checked', 'false')); updateActive(); });
+    }
+    document.querySelectorAll('input[name="cat"], input[name="tool"], input[name="availability"]').forEach(i => i.addEventListener('change', updateActive));
+    document.getElementById('country').addEventListener('change', updateActive);
+    document.getElementById('city').addEventListener('input', updateActive);
+    document.getElementById('q').addEventListener('input', updateActive);
+    updateActive();
+
+    function resetFilters() {
+      document.getElementById('q').value = '';
+      document.querySelectorAll('input[name="cat"], input[name="tool"]').forEach(i => i.checked = false);
+      document.querySelector('input[name="availability"][value=""]').checked = true;
+      document.getElementById('country').value = '';
+      document.getElementById('city').value = '';
+      selectedColor = '';[...document.getElementById('palette').children].forEach(x => x.setAttribute('aria-checked', 'false'));
+      updateActive();
+    }
+
+    function applyFilters(e) {
+      if (e) e.preventDefault();
+      const f = collect();
+      console.log('APPLY FILTERS →', f);
+      alert('فیلترها اعمال شد (نمایشی). برای اتصال واقعی این آبجکت را به API جستجوی خود ارسال کنید.');
+    }
+
+
+    // عملکرد اسلایدر
+    (function () {
+      const slides = document.querySelectorAll('.slider .slide');
+      const nextBtn = document.querySelector('.slider-arrow-right');
+      const prevBtn = document.querySelector('.slider-arrow-left');
+      let current = 0;
+
+      function showSlide(idx) {
+        if (idx < 0) idx = slides.length - 1;
+        if (idx >= slides.length) idx = 0;
+
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('active', i === idx);
+        });
+
+        current = idx;
+      }
+
+      if (nextBtn && prevBtn) {
+        nextBtn.addEventListener('click', () => showSlide(current + 1));
+        prevBtn.addEventListener('click', () => showSlide(current - 1));
+      }
+
+      setInterval(() => {
+        showSlide(current + 1);
+      }, 5000);
+
+      // نمایش اولین اسلاید
+      showSlide(0);
+    })();
+
+    // عملکرد دکمه‌های کشویی
+    document.querySelectorAll('[data-dropdown]').forEach(dd => {
+      const btn = dd.querySelector('button');
+
+      btn.addEventListener('click', () => {
+        dd.classList.toggle('open');
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!dd.contains(e.target)) {
+          dd.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+
+    // عملکرد دکمه ذخیره
+    document.querySelectorAll('.save').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const pressed = btn.getAttribute('aria-pressed') === 'true';
+        btn.setAttribute('aria-pressed', String(!pressed));
+        btn.textContent = pressed ? 'ذخیره' : 'ذخیره شد ✓';
+      });
+    });
+
+    // بارگذاری بیشتر
+    const load = document.getElementById('loadMore');
+    const masonry = document.getElementById('masonry');
+
+    if (load && masonry) {
+      load.addEventListener('click', () => {
+        const items = Array.from(masonry.children).slice(0, 6);
+
+        items.forEach(card => {
+          const clone = card.cloneNode(true);
+          masonry.appendChild(clone);
+        });
+      });
+    }
+
+    // عملکرد جستجو
+    const searchInput = document.querySelector('.search-input');
+    const searchBtn = document.querySelector('.search-btn');
+
+    if (searchBtn) {
+      searchBtn.addEventListener('click', () => {
+        if (searchInput.value.trim() !== '') {
+          alert(`جستجو برای: "${searchInput.value}"`);
+          // کد جستجوی واقعی اینجا قرار می‌گیرد
+        }
+      });
+
+      // جستجو با کلید Enter
+      searchInput.addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') {
+          searchBtn.click();
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>

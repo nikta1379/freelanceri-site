@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>پنل کاربری</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <style>
+    body { background: #f7f7fb; }
+    .panel-container { max-width: 900px; margin: 4vh auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 32px #0002; padding: 2.5rem 2rem; }
+    .sidebar { border-left: 1px solid #eee; min-width: 180px; }
+    .sidebar .nav-link.active { background: #6366f1; color: #fff; }
+    .user-avatar { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid #6366f1; }
+    .user-info { text-align: center; margin-bottom: 2rem; }
+    .main-content { min-height: 300px; }
+    @media (max-width: 700px) { .panel-container { padding: 1rem 0.2rem; } .sidebar { border:none; } }
+  </style>
+</head>
+<body>
+  <div class="panel-container row g-0">
+    <div class="col-md-3 sidebar p-3">
+      <div class="user-info">
+        <img src="assets/img/logo png 2_103307.png" class="user-avatar mb-2" alt="User">
+        <div><strong id="userName">کاربر نمونه</strong></div>
+        <div class="text-muted small" id="userMobile">09123456789</div>
+      </div>
+      <nav class="nav flex-column">
+        <a class="nav-link active" href="#" onclick="showPanel('dashboard', event)">داشبورد</a>
+        <a class="nav-link" href="#" onclick="showPanel('orders', event)">سفارش‌ها</a>
+        <a class="nav-link" href="#" onclick="showPanel('messages', event)">پیام‌ها</a>
+        <a class="nav-link" href="#" onclick="showPanel('wallet', event)">کیف پول</a>
+        <a class="nav-link" href="#" onclick="showPanel('profile', event)">پروفایل</a>
+        <a class="nav-link" href="#" onclick="showPanel('settings', event)">تنظیمات</a>
+        <a class="nav-link text-danger" href="#" onclick="logout()">خروج</a>
+      </nav>
+    </div>
+    <div class="col-md-9 p-4 main-content" id="panelContent">
+      <!-- محتوای پنل اینجا نمایش داده می‌شود -->
+    </div>
+  </div>
+  <script>
+    // داده نمونه کاربر
+    const user = {
+      name: 'کاربر نمونه',
+      mobile: '09123456789',
+      wallet: 1250000,
+      orders: [
+        {id: 1, title: 'خرید قالب سایت', date: '1404/05/20', status: 'موفق', amount: 250000, details: 'قالب HTML شرکتی با امکانات کامل.'},
+        {id: 2, title: 'خرید آیکون پک', date: '1404/05/10', status: 'در انتظار پرداخت', amount: 50000, details: 'مجموعه 200 آیکون حرفه‌ای.'}
+      ],
+      messages: [
+        {id: 1, from: 'پشتیبانی', text: 'سفارش شما با موفقیت ثبت شد.', date: '1404/05/20'},
+        {id: 2, from: 'ادمین', text: 'خوش آمدید به پنل کاربری!', date: '1404/05/10'}
+      ]
+    };
+    document.getElementById('userName').textContent = user.name;
+    document.getElementById('userMobile').textContent = user.mobile;
+
+    function showPanel(panel, e) {
+      if(e) { document.querySelectorAll('.sidebar .nav-link').forEach(l=>l.classList.remove('active')); e.target.classList.add('active'); }
+      let html = '';
+      if(panel==='dashboard') {
+        html = `<h4>داشبورد</h4>
+          <div class='row g-3'>
+            <div class='col-md-6'><div class='card p-3 mb-2'><b>موجودی کیف پول:</b> <span class='text-success'>${user.wallet.toLocaleString()} تومان</span></div></div>
+            <div class='col-md-6'><div class='card p-3 mb-2'><b>تعداد سفارش‌ها:</b> <span class='text-primary'>${user.orders.length}</span></div></div>
+          </div>
+          <p class='mt-3'>خوش آمدید <b>${user.name}</b>! در این بخش خلاصه‌ای از وضعیت حساب خود را مشاهده می‌کنید.</p>`;
+      } else if(panel==='orders') {
+        html = `<h4>سفارش‌ها</h4><ul class='list-group'>` + user.orders.map(o=>
+          `<li class='list-group-item d-flex justify-content-between align-items-center'>
+            <span>
+              <b>${o.title}</b> <span class='text-muted small'>(${o.date})</span>
+              <button class='btn btn-link btn-sm p-0 ms-2' onclick='showOrderDetails(${o.id})'>مشاهده</button>
+            </span>
+            <span><span class='badge bg-${o.status==='موفق'?'success':'warning'}'>${o.status}</span> <span class='text-secondary small'>${o.amount.toLocaleString()} تومان</span></span>
+          </li>`
+        ).join('') + `</ul><div id='orderDetailsModal'></div>`;
+      } else if(panel==='messages') {
+        html = `<h4>پیام‌ها</h4><ul class='list-group'>` + user.messages.map(m=>
+          `<li class='list-group-item'><b>${m.from}:</b> ${m.text} <span class='text-muted small float-end'>${m.date}</span></li>`
+        ).join('') + `</ul>`;
+      } else if(panel==='wallet') {
+        html = `<h4>کیف پول</h4><div class='mb-3'><b>موجودی فعلی:</b> <span class='text-success'>${user.wallet.toLocaleString()} تومان</span></div>
+        <form onsubmit='chargeWallet(event)'><div class='input-group mb-2'><input type='number' min='1000' class='form-control' id='chargeAmount' placeholder='مبلغ شارژ (تومان)' required><button class='btn btn-primary'>شارژ</button></div></form>`;
+      } else if(panel==='profile') {
+        html = `<h4>پروفایل</h4><form onsubmit='saveProfile(event)'><div class='mb-3'><label class='form-label'>نام</label><input class='form-control' id='profileName' value='${user.name}'></div><div class='mb-3'><label class='form-label'>شماره موبایل</label><input class='form-control' value='${user.mobile}' disabled></div><div class='mb-3'><label class='form-label'>تغییر رمز عبور</label><input type='password' class='form-control' id='profilePass' placeholder='رمز جدید'></div><button class='btn btn-primary'>ذخیره</button></form>`;
+      } else if(panel==='settings') {
+        html = `<h4>تنظیمات</h4><p>در این بخش می‌توانید تنظیمات حساب خود را مدیریت کنید.</p>`;
+      }
+      document.getElementById('panelContent').innerHTML = html;
+    }
+    function showOrderDetails(id) {
+      const o = user.orders.find(x=>x.id===id);
+      if(!o) return;
+      const modal = document.createElement('div');
+      modal.className = 'modal fade show';
+      modal.style.display = 'block';
+      modal.innerHTML = `<div class='modal-dialog'><div class='modal-content'><div class='modal-header'><h5 class='modal-title'>جزئیات سفارش</h5><button type='button' class='btn-close' onclick='closeOrderDetails()'></button></div><div class='modal-body'><b>عنوان:</b> ${o.title}<br><b>تاریخ:</b> ${o.date}<br><b>مبلغ:</b> ${o.amount.toLocaleString()} تومان<br><b>وضعیت:</b> ${o.status}<br><b>توضیحات:</b> ${o.details}</div></div></div>`;
+      document.getElementById('orderDetailsModal').appendChild(modal);
+      document.body.classList.add('modal-open');
+    }
+    function closeOrderDetails() {
+      const modal = document.querySelector('#orderDetailsModal .modal');
+      if(modal) modal.remove();
+      document.body.classList.remove('modal-open');
+    }
+    function chargeWallet(e) {
+      e.preventDefault();
+      const amount = Number(document.getElementById('chargeAmount').value);
+      if(amount>=1000) {
+        user.wallet += amount;
+        showPanel('wallet');
+        alert('کیف پول با موفقیت شارژ شد!');
+      }
+    }
+    function saveProfile(e) {
+      e.preventDefault();
+      user.name = document.getElementById('profileName').value;
+      document.getElementById('userName').textContent = user.name;
+      showPanel('profile');
+      alert('پروفایل با موفقیت ذخیره شد!');
+    }
+    function logout() {
+      alert('شما با موفقیت خارج شدید.');
+      window.location.href = 'sms-auth.html';
+    }
+    // نمایش پیش‌فرض داشبورد
+    showPanel('dashboard');
+  </script>
+</body>
+</html>

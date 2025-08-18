@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>تماس با اسنپ‌برند | Snapbrand Contact</title>
+  <meta name="description" content="تماس با اسنپ‌برند — ارسال پیام، پشتیبانی، همکاری و پیشنهادها. پاسخ‌گویی سریع در واتساپ و ایمیل." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0c10;           /* page background */
+      --panel:#10121a;        /* cards */
+      --line:#1e2230;         /* borders */
+      --muted:#a6b0c3;        /* secondary text */
+      --ink:#eef2ff;          /* main text */
+      --brand:#003DFF;        /* Snapbrand blue */
+      --accent:#FF00F9;       /* neon pink */
+      --sun:#FFFF00;          /* neon yellow */
+      --success:#10b981;      /* green */
+      --danger:#ef4444;       /* red */
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:radial-gradient(1200px 500px at 80% -20%,rgba(0,61,255,.12),transparent 60%),
+                          radial-gradient(1000px 400px at 10% -30%,rgba(255,0,249,.10),transparent 60%),
+                          var(--bg);color:var(--ink);font:16px/1.7 Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial}
+
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:rgba(11,12,16,.6);backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid var(--line)}
+    .hdr{display:flex;align-items:center;gap:16px;min-height:68px}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+    .logo{width:28px;height:28px;border-radius:8px;background:conic-gradient(from 180deg at 50% 50%,var(--brand),var(--accent),var(--sun),var(--brand));box-shadow:0 4px 18px rgba(0,61,255,.35)}
+    nav{margin-inline-start:auto;display:flex;gap:10px}
+    .navbtn{padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:#0a0c14;color:var(--ink);text-decoration:none}
+    .cta{background:linear-gradient(135deg,var(--brand),#6b7bff);border:none}
+
+    /* Hero */
+    .hero{padding:26px 0;border-bottom:1px solid var(--line)}
+    .hero h1{margin:6px 0 8px 0;font-size:28px}
+    .hero p{margin:0;color:var(--muted)}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .badge{display:inline-flex;gap:6px;align-items:center;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:#0b0e14;font-size:12px}
+
+    /* Layout */
+    .layout{display:grid;grid-template-columns:1fr 400px;gap:22px;align-items:start;padding:24px 0 40px}
+    @media (max-width:1000px){.layout{grid-template-columns:1fr}}
+
+    /* Panels */
+    .panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+    .panel .hd{display:flex;align-items:center;justify-content:space-between;padding:14px 14px 8px 14px}
+    .panel .hd h2{margin:0;font-size:16px}
+    .panel .bd{padding:0 14px 14px}
+
+    /* Contact grid */
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:640px){.contact-grid{grid-template-columns:1fr}}
+
+    label{display:block;font-size:13px;color:#cbd5e1;margin:12px 0 6px}
+    input[type="text"],input[type="email"],input[type="tel"],select,textarea{
+      width:100%;background:#0b0e14;border:1px solid var(--line);border-radius:12px;color:var(--ink);
+      padding:10px 12px;outline:none
+    }
+    textarea{min-height:140px;resize:vertical}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:640px){.row{grid-template-columns:1fr}}
+
+    .help{font-size:12px;color:var(--muted);margin-top:6px}
+
+    .actions{display:flex;gap:10px;align-items:center;margin-top:14px}
+    button{height:44px;padding:0 16px;border-radius:12px;border:1px solid var(--line);background:#0b0e14;color:var(--ink);cursor:pointer}
+    .primary{background:linear-gradient(135deg,var(--brand),#6b7bff);border:none}
+    .ghost{background:transparent}
+
+    /* Sidebar */
+    .cardlist{display:grid;grid-template-columns:1fr;gap:12px}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px}
+    .card h3{margin:0 0 6px 0;font-size:15px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+    .card a{color:#a5b4fc;text-decoration:none}
+
+    /* Map */
+    .map{border-radius:14px;border:1px solid var(--line);overflow:hidden;height:280px}
+
+    /* FAQ */
+    .faq{display:grid;grid-template-columns:1fr;gap:10px;margin-top:14px}
+    details{background:#0b0e14;border:1px solid var(--line);border-radius:12px;padding:12px}
+    summary{cursor:pointer;font-weight:600}
+
+    /* Toast */
+    .toast{position:fixed;bottom:20px;left:20px;padding:10px 14px;border-radius:12px;font-size:14px;display:none}
+    .toast.ok{background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.5);color:#d1fae5}
+    .toast.err{background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.5);color:#fee2e2}
+
+    /* Focus */
+    a,button,input,select,textarea{outline:none}
+    :focus-visible{box-shadow:0 0 0 3px rgba(0,61,255,.35);border-radius:10px}
+  </style>
+  
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Snapbrand Contact",
+    "url": "https://snapbrand.example/contact",
+    "about": {"@type":"Organization","name":"Snapbrand"},
+    "potentialAction": {"@type":"CommunicateAction","target":"mailto:support@snapbrand.example"}
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container hdr">
+      <a class="brand" href="#">
+        <span class="logo" aria-hidden="true"></span>
+        <strong>Snapbrand</strong>
+      </a>
+      <nav>
+        <a class="navbtn" href="#support">پشتیبانی</a>
+        <a class="navbtn" href="#map">آدرس</a>
+        <a class="navbtn cta" href="#form">ارسال پیام</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>تماس با اسنپ‌برند</h1>
+      <p>سؤال، همکاری، یا پیشنهاد داری؟ از فرم زیر بفرست یا در واتساپ پیام بده. پاسخ‌گویی ما سریعه 🚀</p>
+      <div class="badges">
+        <span class="badge">⏱ میانگین پاسخ: زیر ۲۴ ساعت</span>
+        <span class="badge">💬 واتساپ و ایمیل پشتیبانی</span>
+        <span class="badge">🧾 فاکتور رسمی برای شرکت‌ها</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="container layout">
+    <!-- Main form -->
+    <section id="form" class="panel" aria-labelledby="formTitle">
+      <div class="hd"><h2 id="formTitle">فرم تماس</h2><span style="color:var(--muted);font-size:12px">* پر کردن موارد ضروری</span></div>
+      <div class="bd">
+        <form id="contactForm" novalidate>
+          <div class="row">
+            <div>
+              <label for="name">نام و نام خانوادگی *</label>
+              <input id="name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div>
+              <label for="email">ایمیل *</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <label for="phone">شماره تماس</label>
+              <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="09xxxxxxxxx">
+            </div>
+            <div>
+              <label for="topic">موضوع *</label>
+              <select id="topic" name="topic" required>
+                <option value="">انتخاب کنید…</option>
+                <option>پشتیبانی فنی</option>
+                <option>سؤالات همکاری/همکاری تجاری</option>
+                <option>گزارش مشکل یا باگ</option>
+                <option>پیشنهاد/بازخورد</option>
+              </select>
+            </div>
+          </div>
+          <label for="message">پیام *</label>
+          <textarea id="message" name="message" required placeholder="با جزئیات توضیح بده تا سریع‌تر کمک کنیم…"></textarea>
+
+          <!-- Honeypot for spam -->
+          <input type="text" id="website" name="website" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;opacity:0" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <div class="actions">
+            <button type="submit" class="primary">ارسال پیام</button>
+            <button type="reset" class="ghost">پاک کردن</button>
+            <span class="help">با ارسال فرم، با <a href="#" style="color:#93c5fd">قوانین استفاده</a> موافقم.</span>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Sidebar info -->
+    <aside class="cardlist">
+      <div id="support" class="card">
+        <h3>راه‌های سریع پشتیبانی</h3>
+        <p>واتساپ: <a href="https://wa.me/000000000000" target="_blank" rel="noopener">+00 0000 000000</a></p>
+        <p>ایمیل: <a href="mailto:support@snapbrand.example">support@snapbrand.example</a></p>
+        <p>تلگرام: <a href="https://t.me/snapbrand" target="_blank" rel="noopener">@snapbrand</a></p>
+      </div>
+      <div class="card">
+        <h3>ساعات پاسخ‌گویی</h3>
+        <p>شنبه تا چهارشنبه: ۹ تا ۱۸
+        <br>پنج‌شنبه: ۹ تا ۱۴ — جمعه و تعطیلات رسمی: فقط اورژانسی</p>
+      </div>
+      <div class="card">
+        <h3>آدرس دفتر</h3>
+        <p>— (به‌دلخواه شما تکمیل می‌شود)</p>
+      </div>
+      <div class="card">
+        <h3>سوالات پرتکرار</h3>
+        <div class="faq">
+          <details><summary>چطور می‌تونم پیشنهاد همکاری بدم؟</summary><p>از گزینه «سؤالات همکاری» در فرم تماس استفاده کنید یا مستقیم ایمیل بزنین.</p></details>
+          <details><summary>زمان پاسخ‌گویی چقدره؟</summary><p>معمولاً زیر ۲۴ ساعت کاری. موارد فوری را در واتساپ پیام دهید.</p></details>
+          <details><summary>فاکتور رسمی صادر می‌کنید؟</summary><p>بله، برای شرکت‌ها و سازمان‌ها امکان‌پذیر است.</p></details>
+        </div>
+      </div>
+      <div id="map" class="card">
+        <h3>نقشه</h3>
+        <div class="map">
+          <iframe title="Snapbrand Office Map" src="https://www.openstreetmap.org/export/embed.html?bbox=51.28%2C35.69%2C51.5%2C35.78&amp;layer=mapnik" style="width:100%;height:100%;border:0"></iframe>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between;align-items:center;padding:18px 0;border-top:1px solid var(--line);color:#9aa4b2">
+      <span>© 2025 Snapbrand — همه حقوق محفوظ است.</span>
+      <div style="display:flex;gap:10px">
+        <a class="navbtn" href="#">قوانین</a>
+        <a class="navbtn" href="#">حریم خصوصی</a>
+        <a class="navbtn" href="#">مستندات API</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // Minimal client-side validation + demo submit (replace with your endpoint)
+    const f = document.getElementById('contactForm');
+    const toast = document.getElementById('toast');
+
+    function showToast(msg, ok=true){
+      toast.textContent = msg;
+      toast.className = 'toast ' + (ok ? 'ok' : 'err');
+      toast.style.display = 'block';
+      setTimeout(()=> toast.style.display = 'none', 4000);
+    }
+
+    f.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      // honeypot
+      if(document.getElementById('website').value){ return; }
+      const data = Object.fromEntries(new FormData(f).entries());
+      // basic checks
+      if(!data.name || !data.email || !data.topic || !data.message){
+        showToast('لطفاً موارد ستاره‌دار را کامل کنید.', false); return;
+      }
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)){
+        showToast('ایمیل معتبر نیست.', false); return;
+      }
+      try{
+        // Replace URL with your backend endpoint
+        // const res = await fetch('/api/contact', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)});
+        // if(!res.ok) throw new Error('شبکه در دسترس نیست');
+        // const json = await res.json();
+        await new Promise(r=>setTimeout(r, 600)); // demo
+        showToast('پیام شما با موفقیت ارسال شد. متشکریم!');
+        f.reset();
+      }catch(err){
+        showToast('ارسال ناموفق بود. لطفاً دوباره تلاش کنید.', false);
+      }
+    });
+  </script>
+</body>
+</html>

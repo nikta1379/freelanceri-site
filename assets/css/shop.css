@@ -1,0 +1,11 @@
+
+    /* ساده و قابل تغییر — طراحی RTL-friendly */
+    body { background:#f7f8fb; font-family: Tahoma, 'Segoe UI', Roboto, sans-serif; }
+    .topbar { background: linear-gradient(90deg,#556ee6,#8f6ff6); color: #fff; }
+    .brand { font-weight:700; letter-spacing: .5px; }
+    .role-pill { cursor:pointer; }
+    .card-product { transition: transform .12s ease, box-shadow .12s ease; }
+    .card-product:hover{ transform: translateY(-6px); box-shadow: 0 10px 30px rgba(0,0,0,.08); }
+    .project-card { border-left: 4px solid #556ee6; }
+    @media (min-width: 992px){ .main-grid { display:grid; grid-template-columns: 1fr 360px; gap:20px; } }
+    /* mobile adjustments */
