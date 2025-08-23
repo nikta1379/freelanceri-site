@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>راهنمای شروع برای فریلنسرها — اسنپ‌برند</title>
+<style>
+:root{
+  --bg:#ffffff;--text:#0f172a;--muted:#64748b;--panel:#ffffff;--border:#e5e7eb;
+  --shadow:0 10px 30px rgba(2,6,23,.06);
+  --brand:#003DFF;
+  --accent:#FF00F9;
+  --no:#e2e8f0;
+  --radius:16px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:14px/1.85 "IRANSans","Vazirmatn",system-ui}
+.container{max-width:1100px;margin:auto;padding:0 20px}
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--border)}
+.row{display:flex;align-items:center;gap:12px}
+.space{flex:1}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;text-decoration:none;color:var(--text)}
+.logo-b{width:28px;height:28px;border-radius:8px;background:var(--brand)}
+.nav{display:flex;gap:8px}
+.nav a{padding:10px 12px;border-radius:10px;color:var(--text);text-decoration:none;border:1px solid transparent}
+.nav a[aria-current="page"]{background:#f8fafc;border-color:var(--border)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--brand);background:var(--brand);color:#fff;text-decoration:none;cursor:pointer}
+.btn.ghost{background:#fff;color:var(--brand)}
+.hero{border-bottom:1px solid var(--border);background:linear-gradient(180deg, rgba(0,61,255,.06), transparent 60%)}
+.hero .wrap{padding:28px 0}
+.hero h1{margin:0 0 8px 0;font-size:28px}
+.hero p{margin:0;color:var(--muted)}
+.note{margin-top:10px;font-size:12px;color:var(--brand);background:#eef2ff;border:1px solid #c7d2fe;padding:6px 10px;border-radius:999px;display:inline-block}
+.section{padding:26px 0}
+.grid{display:grid;gap:14px}
+.cards{grid-template-columns:repeat(3,1fr)}
+@media (max-width:1000px){.cards{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:680px){.cards{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px}
+.card h3{margin:0 0 8px 0}
+.badge{font-size:12px;padding:3px 8px;border-radius:999px;background:#eef2ff;border:1px solid #e0e7ff;color:#3730a3}
+ul.clean{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.li{display:flex;gap:10px;align-items:flex-start}
+.ok{width:18px;height:18px;border-radius:6px;background:var(--accent);display:inline-block;flex:none;margin-top:2px}
+.no{width:18px;height:18px;border-radius:6px;background:#e2e8f0;display:inline-block;flex:none;margin-top:2px}
+.kv{display:grid;grid-template-columns:140px 1fr;gap:6px 10px}
+.kv div{padding:6px 10px;border:1px solid var(--border);border-radius:10px;background:#fff}
+.table-wrap{overflow:auto;position:relative}
+@media (max-width:740px){
+  table{min-width:600px}
+  .table-wrap::after{content:"← پیمایش افقی →"; position:absolute; bottom:4px; left:0; right:0; text-align:center; font-size:12px; color:#94a3b8;}
+}
+table{width:100%;border-collapse:separate;border-spacing:0 8px}
+th,td{background:#fff;border:1px solid var(--border);padding:10px 12px}
+th:first-child{border-radius:12px 0 0 12px}
+th:last-child{border-radius:0 12px 12px 0}
+td:first-child{border-radius:12px 0 0 12px}
+td:last-child{border-radius:0 12px 12px 0}
+.tcenter{text-align:center}
+.cta-card{display:flex;align-items:center;gap:14px;justify-content:space-between;border:1px solid #c7d2fe;background:#f8faff;border-radius:16px;padding:16px}
+@media (max-width:740px){.cta-card{flex-direction:column;align-items:stretch}.cta-card .btn{width:100%;justify-content:center}}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:1000px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:680px){.steps{grid-template-columns:1fr}}
+.step{border:1px solid var(--border);border-radius:16px;padding:16px;background:#fff;box-shadow:var(--shadow)}
+.step .n{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:var(--brand);color:#fff;font-weight:800;margin-left:8px}
+.step h3{margin:8px 0 8px 0;font-size:16px}
+.small{font-size:12px;color:var(--muted)}
+footer{margin:40px 0 60px;color:#94a3b8;text-align:center}
+
+/* Plan bullets (within #plans) should use brand blue instead of pink accent */
+#plans .ok { background: var(--brand) !important; }
+
+</style>
+</head>
+<body>
+<header>
+  <div class="container" style="padding:10px 20px">
+    <div class="row">
+      <a class="logo" href="#"><span class="logo-b"></span><span>Snapbrand</span></a>
+      <nav class="nav">
+        <a href="#" aria-current="page">راهنما</a>
+        <a href="#plans">پلن‌ها</a>
+        <a href="#steps">مراحل</a>
+      </nav>
+      <div class="space"></div>
+      <a class="btn" href="#signup">ثبت‌نام</a>
+      <a class="btn" href="./index.html">خانه</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container wrap">
+    <h1>فریلنسر تازه‌وارد؟ از همین‌جا شروع کن!</h1>
+    <p>اینجا اسنپ‌برنده؛ جایی برای ساختن برند شخصی، ارتباط مستقیم با کارفرما و رشد واقعی مسیر حرفه‌ای تو.</p>
+    <span class="note">ما از پروژه‌ها و فروش فایل‌ها هیچ کارمزدی نمی‌گیریم.</span>
+    <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+      <a class="btn" href="#steps">شروع گام‌به‌گام</a>
+      <a class="btn ghost" href="#plans">مشاهده پلن‌ها</a>
+    </div>
+  </div>
+</section>
+
+<main class="container section" id="steps">
+  <h2 style="margin:0 0 12px 0">مراحل شروع در اسنپ‌برند</h2>
+  <div class="steps">
+    <div class="step">
+      <span class="n">۱</span> <span class="small">ثبت‌نام سریع</span>
+      <h3>اکانتت را با ایمیل یا شماره بساز</h3>
+      <p>چند ثانیه طول می‌کشد و بعد مستقیم می‌ری سراغ ساخت پروفایل.</p>
+      <a class="btn" href="#signup">ثبت‌نام</a>
+    </div>
+    <div class="step">
+      <span class="n">۲</span> <span class="small">انتخاب پلن</span>
+      <h3>از رایگان شروع کن، حرفه‌ای‌تر شو</h3>
+      <p>برای داشتن امکاناتی مثل اضافه‌کردن نمونه‌کار بیشتر، دیدن آمار بازدید پروفایلت، پیشنهاد هوشمند کلیدواژه‌ها و برجسته‌شدن در نتایج، پلنت رو ارتقا بده.</p>
+      <a class="btn ghost" href="#plans">پلن‌ها</a>
+    </div>
+    <div class="step">
+      <span class="n">۳</span> <span class="small">پروفایل حرفه‌ای</span>
+      <h3>عکس، بیو جذاب و مهارت‌ها</h3>
+      <p>پروفایل تو، برند شخصی توست؛ کامل و دقیق پرش کن.</p>
+    </div>
+    <div class="step">
+      <span class="n">۴</span> <span class="small">نمونه‌کار</span>
+      <h3>حتی تمرینی هم ارزشمنده</h3>
+      <p>عکس، ویدیو، PDF یا لینک اضافه کن؛ اولین همکاری‌ات از همین‌جا شروع می‌شود.</p>
+    </div>
+    <div class="step">
+      <span class="n">۵</span> <span class="small">فروشگاه (بیزینس)</span>
+      <h3>محصولاتت را با ۰٪ کمیسیون بفروش</h3>
+      <p>فایل، تمپلیت، ابزار یا آموزش داری؟ فروشگاه را در پلن بیزینس فعال کن.</p>
+    </div>
+    <div class="step">
+      <span class="n">۶</span> <span class="small">شروع همکاری</span>
+      <h3>درخواست همکاری مستقیم</h3>
+      <p>کارفرماها مستقیم بهت پیام می‌دهند—بدون واسطه و بدون کارمزد.</p>
+    </div>
+  </div>
+
+<section class="container section">
+  <h2 style="margin:0 0 12px 0">چرا اسنپ‌برند بهترین جا برای شروعه؟</h2>
+  <ul class="clean">
+    <li class="li"><span class="ok"></span> ساخت برند شخصی واقعی، نه فقط گرفتن پروژه</li>
+    <li class="li"><span class="ok"></span> بدون کارمزد و بدون قطع ارتباط</li>
+    <li class="li"><span class="ok"></span> پلتفرمی طراحی‌شده برای متخصص‌ها</li>
+    <li class="li"><span class="ok"></span> ویترین فروش اختصاصی برای فایل‌ها و خدمات</li>
+  </ul>
+</section>
+
+</main>
+
+<section class="container section" id="plans">
+  <h2 style="margin:0 0 12px 0">خلاصه پلن‌ها</h2>
+  <div class="grid cards">
+    <div class="card">
+      <h3>رایگان</h3>
+      <span class="badge">تست محیط</span>
+      <ul class="clean">
+        <li class="li"><span class="ok"></span> ساخت پروفایل اولیه</li>
+        <li class="li"><span class="no"></span> افزودن نمونه‌کار / تماس</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>پلاس</h3>
+      <span class="badge">شروع جدی</span>
+      <ul class="clean">
+        <li class="li"><span class="ok"></span> ۵ نمونه‌کار، هایلایت ملایم</li>
+        <li class="li"><span class="ok"></span> پیشنهاددهی خودکار کلیدواژه</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>پرو</h3>
+      <span class="badge">حرفه‌ای</span>
+      <ul class="clean">
+        <li class="li"><span class="ok"></span> اولویت بالا + هایلایت پررنگ</li>
+        <li class="li"><span class="ok"></span> پیامک پروژه + نشان طلایی</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>بیزینس</h3>
+      <span class="badge">فروش محصول</span>
+      <ul class="clean">
+        <li class="li"><span class="ok"></span> فروشگاه با ۰٪ کمیسیون</li>
+        <li class="li"><span class="ok"></span> نمونه‌کار نامحدود + ویترین</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="container section">
+  <div class="cta-card">
+    <div>
+      <h3 style="margin:0">آماده‌ای مسیر حرفه‌ای‌ات را بسازی؟</h3>
+      <div class="small">با پلاس شروع کن؛ هر زمان خواستی به پرو یا بیزینس ارتقا بده.</div>
+    </div>
+    <a class="btn" href="#signup">شروع فریلنسری در اسنپ‌برند</a>
+  </div>
+</section>
+
+<footer>© Snapbrand — سبک سفید، RTL، دکمه‌های آبی اسنپ و بولت‌های صورتی.</footer>
+</body>
+</html>
