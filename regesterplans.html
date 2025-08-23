@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>پلن‌های عضویت فریلنسر — اسنپ‌برند</title>
+<style>
+:root{
+  --bg:#ffffff;--text:#0f172a;--muted:#64748b;--panel:#ffffff;--border:#e5e7eb;
+  --shadow:0 10px 30px rgba(2,6,23,.06);
+  --brand:#003DFF;           /* Buttons */
+  --accent:#FF00F9;          /* OK bullets */
+  --no:#cbd5e1;              /* NO bullets */
+  --badge:#eef2ff;--badge-text:#3730a3;
+  --radius:16px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:14px/1.85 "IRANSans","Vazirmatn",system-ui}
+.container{max-width:1200px;margin:auto;padding:0 20px}
+
+/* Header */
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--border)}
+.row{display:flex;align-items:center;gap:12px}
+.space{flex:1}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;text-decoration:none;color:var(--text)}
+.logo-b{width:28px;height:28px;border-radius:8px;background:var(--brand)}
+.nav{display:flex;gap:8px}
+.nav a{padding:10px 12px;border-radius:10px;color:var(--text);text-decoration:none;border:1px solid transparent}
+.nav a[aria-current="page"]{background:#f8fafc;border-color:var(--border)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--brand);background:var(--brand);color:#fff;text-decoration:none;cursor:pointer}
+.btn.ghost{background:#fff;color:var(--brand)}
+
+/* Hero */
+.hero{border-bottom:1px solid var(--border);background:linear-gradient(180deg, rgba(0,61,255,.06), transparent 60%)}
+.hero .wrap{padding:28px 0}
+.hero h1{margin:0 0 8px 0;font-size:28px}
+.hero p{margin:0;color:var(--muted)}
+.hero .note{margin-top:8px;font-size:12px;color:var(--brand);background:#eef2ff;border:1px solid #c7d2fe;padding:6px 10px;border-radius:999px;display:inline-block}
+
+/* Billing toggle */
+.billing{display:flex;align-items:center;gap:10px;margin-top:14px}
+.switch{position:relative;width:74px;height:34px;background:#f1f5f9;border:1px solid var(--border);border-radius:999px;cursor:pointer}
+.knob{position:absolute;top:2px;right:2px;width:30px;height:30px;border-radius:50%;background:#fff;border:1px solid var(--border);box-shadow:var(--shadow);transition:all .25s}
+.switch[data-year="1"] .knob{right:42px}
+.save{font-size:12px;color:var(--brand);background:#eef2ff;border:1px solid #c7d2fe;padding:4px 8px;border-radius:999px}
+
+/* Plans */
+.section{padding:22px 0}
+.plans{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:16px}
+@media (max-width:1100px){.plans{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.plans{grid-template-columns:1fr}}
+.plan{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;display:flex;flex-direction:column}
+.plan.pop{border-color:rgba(0,61,255,.35)}
+.plan.business{border-color:rgba(255,0,249,.35)}
+.plan .hd{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.badge{font-size:12px;padding:4px 8px;border-radius:999px;background:var(--badge);border:1px solid #e0e7ff;color:var(--badge-text)}
+.price{font-weight:900;font-size:26px;margin:6px 0}
+.per{color:var(--muted);font-size:12px}
+.feat{display:grid;gap:8px;margin:12px 0}
+.feat li{list-style:none;display:flex;gap:10px;align-items:flex-start}
+.ok{width:18px;height:18px;border-radius:6px;background:var(--accent);display:inline-block}
+.no{width:18px;height:18px;border-radius:6px;background:#e2e8f0;display:inline-block}
+.cta{margin-top:auto;display:flex;gap:8px}
+.high{background:linear-gradient(180deg,rgba(255,0,249,.08),rgba(255,255,0,.08));border:1px dashed rgba(255,0,249,.35);padding:10px;border-radius:12px;font-weight:700}
+
+/* Comparison table */
+.hd2{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.table-wrap{overflow:auto}
+table{width:100%;border-collapse:separate;border-spacing:0 8px}
+th,td{background:#fff;border:1px solid var(--border);padding:10px 12px}
+th{position:sticky;top:72px;z-index:1}
+th:first-child{border-radius:12px 0 0 12px}
+th:last-child{border-radius:0 12px 12px 0}
+td:first-child{border-radius:12px 0 0 12px}
+td:last-child{border-radius:0 12px 12px 0}
+.tcenter{text-align:center}
+
+/* FAQ */
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:900px){.faq{grid-template-columns:1fr}}
+details{background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px}
+summary{cursor:pointer;font-weight:700}
+
+/* CTA */
+.cta-card{display:flex;align-items:center;gap:14px;justify-content:space-between;border:1px solid #c7d2fe;background:#f8faff;border-radius:16px;padding:16px}
+</style>
+</head>
+<body>
+<header>
+  <div class="container" style="padding:10px 20px">
+    <div class="row">
+      <a class="logo" href="#"><span class="logo-b"></span><span>Snapbrand</span></a>
+      <nav class="nav"><a href="./index.html">خانه</a><a href="./plan.html" aria-current="page">پلن‌ها</a><a href="#faq">سوالات متداول</a></nav>
+      <div class="space"></div><a class="btn" href="./login.html">ورود</a><a class="btn" href="#signup">ثبت‌نام</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container wrap">
+    <h1>پلن‌های عضویت فریلنسر — بدون کارمزد</h1>
+    <p>دیده‌شدن بیشتر، پیشنهادهای دقیق‌تر و ابزارهای حرفه‌ای برای رشد برند شخصی‌ات. فروش محصول فقط در پلن «بیزینس» فعال است.</p>
+    <span class="note">ما از پروژه یا فروش، هیچ درصدی نمی‌گیریم.</span>
+    <div class="billing" aria-label="تنظیم پرداخت">
+      <span>ماهانه</span>
+      <div id="billSwitch" class="switch" role="switch" aria-checked="false" tabindex="0"><span class="knob"></span></div>
+      <span>سالانه</span>
+      <span class="save">٪۲۰ صرفه‌جویی</span>
+    </div>
+  </div>
+</section>
+
+<main class="container section" id="plans">
+  <div class="plans" id="plansWrap">
+
+    <!-- Free -->
+    <article class="plan" data-month="0" data-year="0">
+      <div class="hd"><h3>پلن رایگان اسنپ برند</h3></div>
+      <div class="price"><span class="val">0</span> تومان</div>
+      <div class="per">ماهانه</div>
+      <ul class="feat">
+        <li><span class="ok"></span> ساخت پروفایل اولیه</li>
+        <li><span class="no"></span> افزودن نمونه‌کار (غیرفعال)</li>
+        <li><span class="no"></span> مشاهده اطلاعات تماس فریلنسر</li>
+        <li><span class="no"></span> هایلایت در نتایج جستجو</li>
+        <li><span class="no"></span> نشان «تایید حرفه‌ای»</li>
+        <li><span class="no"></span> گزارش بازدید پروفایل</li>
+        <li><span class="no"></span> فروش در فروشگاه اسنپ‌برند</li>
+      </ul>
+      <div class="cta"><a class="btn" href="#">شروع رایگان</a></div>
+    </article>
+
+    <!-- Plus -->
+    <article class="plan pop" data-month="99000" data-year="950000">
+      <div class="hd"><h3>پلن اسنپ برند پلاس</h3><span class="badge">پرفروش</span></div>
+      <div class="price"><span class="val">99,000</span> تومان</div>
+      <div class="per">ماهانه • مناسب شروع حرفه‌ای</div>
+      <ul class="feat">
+        <li><span class="ok"></span> افزودن تا 5 نمونه‌کار</li>
+        <li><span class="ok"></span> هایلایت ملایم در نتایج + نشان «پرو»</li>
+        <li><span class="ok"></span> پیشنهاددهی خودکار برای کلیدواژه‌ها</li>
+        <li><span class="ok"></span> مشاهده اطلاعات تماس فریلنسر</li>
+        <li><span class="ok"></span> گزارش بازدید پروفایل</li>
+        <li><span class="no"></span> نمایش در ویترین دسته‌بندی</li>
+        <li><span class="no"></span> فروش در فروشگاه اسنپ‌برند</li>
+      </ul>
+      <div class="cta"><a class="btn" href="#">انتخاب پلاس</a></div>
+    </article>
+
+    <!-- Pro -->
+    <article class="plan" data-month="199000" data-year="1900000">
+      <div class="hd"><h3>پلن اسنپ برند پرو</h3></div>
+      <div class="price"><span class="val">199,000</span> تومان</div>
+      <div class="per">ماهانه • بهترین برای حرفه‌ای‌ها</div>
+      <ul class="feat">
+        <li><span class="ok"></span> افزودن تا 10 نمونه‌کار</li>
+        <li><span class="ok"></span> نشان طلایی + تایید هویت فوری</li>
+        <li><span class="ok"></span> کلیدواژه‌های سفارشی + هشدار پروژه</li>
+        <li><span class="ok"></span> اولویت بالاتر در نتایج + هایلایت پررنگ</li>
+        <li><span class="ok"></span> پیامک پروژه‌های مطابق مهارت</li>
+        <li><span class="ok"></span> نمایش در ویترین دسته‌بندی</li>
+        <li><span class="ok"></span> گزارش بازدید پروفایل</li>
+        <li><span class="no"></span> فروش در فروشگاه اسنپ‌برند</li>
+      </ul>
+      <div class="cta"><a class="btn" href="#">انتخاب پرو</a></div>
+    </article>
+
+    <!-- Business -->
+    <article class="plan business" data-month="399000" data-year="3830000">
+      <div class="hd"><h3>پلن اسنپ برند بیزینس</h3><span class="badge">ویژه فروشگاه</span></div>
+      <div class="price"><span class="val">399,000</span> تومان</div>
+      <div class="per">ماهانه • مناسب فروشندگان</div>
+      <div class="high">مزیت کلیدی: فعال‌سازی فروش در فروشگاه اسنپ‌برند (کمیسیون ۰٪).</div>
+      <ul class="feat">
+        <li><span class="ok"></span> نمونه‌کار نامحدود</li>
+        <li><span class="ok"></span> نشان طلایی + تایید هویت فوری</li>
+        <li><span class="ok"></span> کلیدواژه‌های سفارشی + هشدار پروژه</li>
+        <li><span class="ok"></span> اولویت بالاتر در نتایج + هایلایت پررنگ</li>
+        <li><span class="ok"></span> پیامک پروژه‌های مطابق مهارت</li>
+        <li><span class="ok"></span> نمایش در ویترین دسته‌بندی</li>
+        <li><span class="ok"></span> گزارش بازدید پروفایل</li>
+        <li><span class="ok"></span> فروش محصول در فروشگاه اسنپ‌برند</li>
+      </ul>
+      <div class="cta"><a class="btn" href="#">انتخاب بیزینس</a></div>
+    </article>
+
+  </div>
+</main>
+
+<!-- Comparison Table -->
+<section class="container section">
+  <div class="hd2"><h2 style="margin:0">مقایسهٔ ویژگی‌ها</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>ویژگی</th>
+          <th class="tcenter">رایگان</th>
+          <th class="tcenter">پلاس</th>
+          <th class="tcenter">پرو</th>
+          <th class="tcenter">بیزینس</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>ساخت پروفایل</td><td class="tcenter">✓</td><td class="tcenter">✓</td><td class="tcenter">✓</td><td class="tcenter">✓</td></tr>
+        <tr><td>نمونه‌کار</td><td class="tcenter">—</td><td class="tcenter">۵</td><td class="tcenter">۱۰</td><td class="tcenter">نامحدود</td></tr>
+        <tr><td>مشاهده اطلاعات تماس فریلنسر</td><td class="tcenter">—</td><td class="tcenter">✓</td><td class="tcenter">✓</td><td class="tcenter">✓</td></tr>
+        <tr><td>هایلایت در نتایج</td><td class="tcenter">—</td><td class="tcenter">ملایم</td><td class="tcenter">پررنگ</td><td class="tcenter">پررنگ</td></tr>
+        <tr><td>نشان و احراز هویت</td><td class="tcenter">—</td><td class="tcenter">نشان «پرو»</td><td class="tcenter">نشان طلایی + احراز</td><td class="tcenter">نشان طلایی + احراز</td></tr>
+        <tr><td>پیشنهاددهی خودکار برای کلیدواژه‌ها</td><td class="tcenter">—</td><td class="tcenter">✓</td><td class="tcenter">—</td><td class="tcenter">—</td></tr>
+        <tr><td>کلیدواژه‌های سفارشی + هشدار پروژه</td><td class="tcenter">—</td><td class="tcenter">—</td><td class="tcenter">✓</td><td class="tcenter">✓</td></tr>
+        <tr><td>نمایش در ویترین دسته‌بندی</td><td class="tcenter">—</td><td class="tcenter">—</td><td class="tcenter">✓</td><td class="tcenter">✓</td></tr>
+        <tr><td>گزارش بازدید پروفایل</td><td class="tcenter">—</td><td class="tcenter">✓</td><td class="tcenter">✓</td><td class="tcenter">✓</td></tr>
+        <tr><td>فروش در فروشگاه</td><td class="tcenter">—</td><td class="tcenter">—</td><td class="tcenter">—</td><td class="tcenter">✓ (۰٪)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="container section">
+  <div class="hd2"><h2 style="margin:0">سوالات متداول</h2></div>
+  <div class="faq">
+    <details open>
+      <summary>چرا فروشگاه فقط در پلن بیزینس فعاله؟</summary>
+      <div class="meta">برای حفظ شعار «بدون کارمزد» و فراهم‌کردن زیرساخت‌های لازم (آپلود فایل، صورت‌حساب، ضدتقلب و …) فروشگاه برای فروشندگان جدی در پلن بیزینس فعال می‌شود.</div>
+    </details>
+    <details>
+      <summary>می‌توانم هر زمان پلن را ارتقا یا تنزل دهم؟</summary>
+      <div class="meta">بله. ارتقا/تنزل آنی است و مابه‌التفاوت با توجه به روزهای باقیمانده به‌صورت خودکار محاسبه می‌شود.</div>
+    </details>
+    <details>
+      <summary>تفاوت پرداخت ماهانه و سالانه چیست؟</summary>
+      <div class="meta">پرداخت سالانه حدود ۲۰٪ ارزان‌تر است و قیمت هر ماه را کاهش می‌دهد. می‌توانید هر زمان بین دو حالت جابه‌جا شوید.</div>
+    </details>
+    <details>
+      <summary>بعد از لغو اشتراک چه می‌شود؟</summary>
+      <div class="meta">لغو، دوره بعدی را غیرفعال می‌کند؛ دسترسی‌های شما تا پایان دوره جاری فعال باقی می‌ماند.</div>
+    </details>
+  
+  <details>
+    <summary>پیشنهاددهی خودکار برای کلیدواژه‌ها یعنی چه؟</summary>
+    <div class="meta">در این قابلیت، اسنپ‌برند بر اساس مهارت‌ها، نمونه‌کارها و دسته‌بندی‌های پرطرفدار، چند کلیدواژه به شما پیشنهاد می‌دهد تا در پروفایل خود اضافه کنید. این کار شانس دیده‌شدن شما در نتایج جستجو و پیشنهاد پروژه‌ها را افزایش می‌دهد.</div>
+  </details>
+  <details>
+    <summary>کلیدواژه‌های سفارشی + هشدار پروژه (پرو و بیزینس) یعنی چه؟</summary>
+    <div class="meta">در این قابلیت، شما می‌توانید کلیدواژه‌های تخصصی خود را به‌صورت دستی تعریف کنید. هر زمان پروژه‌ای با این کلیدواژه‌ها ثبت شود، اسنپ‌برند برای شما هشدار ارسال می‌کند تا سریع‌تر اقدام کنید و پیشنهاد بدهید.</div>
+  </details>
+  <details>
+    <summary>اولویت بالاتر در نتایج + هایلایت پررنگ (پرو و بیزینس) یعنی چه؟</summary>
+    <div class="meta">در این قابلیت، پروفایل شما با اولویت بالاتر در نتایج جستجو نمایش داده می‌شود و با هایلایت پررنگ مشخص می‌گردد. این کار باعث افزایش نرخ کلیک و بازدید پروفایل شما می‌شود.</div>
+  </details>
+  <details>
+    <summary>پیامک پروژه‌های مطابق مهارت (پرو و بیزینس) یعنی چه؟</summary>
+    <div class="meta">در این قابلیت، وقتی پروژه‌ای متناسب با مهارت‌ها یا کلیدواژه‌های شما منتشر شود، علاوه بر اعلان داخل سایت، پیامک هم دریافت می‌کنید تا حتی خارج از سایت هم سریع مطلع شوید و فرصت از دست نرود.</div>
+  </details>
+  <details>
+    <summary>نمایش در ویترین دسته‌بندی (پرو و بیزینس) یعنی چه؟</summary>
+    <div class="meta">در این قابلیت، پروفایل شما در ویترین دسته‌بندی‌های مرتبط (جایگاه منتخب و پرترافیک) نمایش داده می‌شود تا کارفرماها سریع‌تر شما را ببینند و احتمال ارتباط و همکاری افزایش یابد.</div>
+  </details>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="container section">
+  <div class="cta-card">
+    <div>
+      <div class="hd"><h3 style="margin:0">آماده‌ای برند شخصی‌ات بیشتر دیده شود؟</h3><span class="badge">پیشنهاد محبوب</span></div>
+      <div class="per">با «پلاس» شروع کن؛ هر زمان خواستی به «پرو» یا «بیزینس» ارتقا بده.</div>
+    </div>
+    <a class="btn" href="#signup">شروع با پلاس</a>
+  </div>
+</section>
+
+<footer class="container" style="margin:40px 0 60px;color:#94a3b8;text-align:center">
+  © Snapbrand — نسخه سفید، RTL و دارای سوئیچ ماهانه/سالانه (۲۰٪ تخفیف).
+</footer>
+
+<script>
+// Billing toggle: monthly/yearly (20% off simulated by 'data-year' values)
+const sw = document.getElementById('billSwitch');
+const plans = document.querySelectorAll('.plan');
+const isYear = () => sw.getAttribute('aria-checked') === 'true';
+function format(n){return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+function updatePrices(){
+  plans.forEach(p=>{
+    const m = +p.dataset.month, y = +p.dataset.year;
+    const val = isYear() ? y : m;
+    const el = p.querySelector('.val'); if(el) el.textContent = format(val);
+    const per = p.querySelector('.per'); if(per) per.textContent = isYear()? 'سالانه' : 'ماهانه';
+  });
+}
+function toggle(){
+  const on = !isYear();
+  sw.setAttribute('aria-checked', on);
+  sw.dataset.year = on ? '1' : '0';
+  updatePrices();
+}
+sw.addEventListener('click', toggle);
+sw.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); toggle(); }});
+updatePrices();
+</script>
+</body>
+</html>
