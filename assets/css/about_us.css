@@ -1,91 +1,10 @@
-body {
-  margin: 0;
-  font-family: 'Vazir', sans-serif;
-  background-color: #f9f9f9;
-  direction: rtl;
-}
 
-header {
-  background-color: #ffffff;
-  padding: 30px;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+:root{
+  --bg:#ffffff;--text:#0f172a;--muted:#475569;--border:#e5e7eb;
+  --brand:#003DFF;--accent:#FF00F9;--radius:18px;--shadow:0 20px 50px rgba(2,6,23,.10);
 }
-
-header h1 {
-  margin-bottom: 15px;
-  color: #333;
-  font-size: 28px;
-}
-
-header input {
-  width: 60%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 25px;
-  padding: 40px;
-}
-
-.card {
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.card-content {
-  padding: 20px;
-}
-
-.card-content h3 {
-  margin: 0;
-  font-size: 20px;
-  color: #0077cc;
-}
-
-.card-content p {
-  margin: 10px 0;
-  color: #555;
-  font-size: 14px;
-}
-
-.card-content .price {
-  font-weight: bold;
-  color: #222;
-  margin-bottom: 10px;
-}
-
-.card-content button {
-  background-color: #0077cc;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.card-content button:hover {
-  background-color: #00c896;
-}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.9 "IRANSans","Vazirmatn",system-ui}
 .header-container {
       display: flex;
       justify-content: space-between;
@@ -360,39 +279,37 @@ header input {
     .register:hover {
       background-color: #f0f0f0;
     }
-    .modal {
-  position: fixed;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.2);
-  width: 90%;
-  max-width: 400px;
-  z-index: 1000;
-}
 
-.hidden {
-  display: none;
-}
 
-.modal textarea, .modal input {
-  width: 100%;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
+.nav{display:flex;gap:10px;align-items:center;padding:12px 0}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;color:#0f172a;text-decoration:none}
+.logo-b{width:28px;height:28px;border-radius:8px;background:var(--brand)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--brand);border:1px solid var(--brand);color:#fff;border-radius:12px;padding:10px 14px;text-decoration:none}
+.btn.ghost{background:#fff;color:var(--brand)}
 
-    footer {
+.hero-wrap{padding:18px 0;border-bottom:1px solid var(--border);background:linear-gradient(180deg, rgba(0,61,255,.04), transparent 70%)}
+.hero{max-width:1220px;margin:auto;padding:0 20px}
+.hero-card{overflow:hidden;border-radius:24px;border:1px solid var(--border);box-shadow:var(--shadow);background:#fff;animation:fadein .8s ease both}
+.hero-img{display:block;width:100%;height:auto;object-fit:cover}
+@media (min-width:900px){
+  .hero-img{height:420px;aspect-ratio:auto}
+}
+@keyframes fadein{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+.section{padding:26px 0}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:900px){.grid-2{grid-template-columns:1fr}}
+
+.card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin:12px 0}
+.card h2{margin:0 0 8px 0;font-size:18px}
+blockquote{margin:0;border-right:3px solid var(--brand);padding:6px 12px;background:#f8faff;border-radius:12px}
+hr{border:0;border-top:1px solid var(--border);margin:20px 0}
+footer {
     background-color:blue;
     color: #eee;
     padding: 40px 20px;
   }
-
-.footer-container {
+  .footer-container {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
@@ -427,3 +344,4 @@ header input {
   .footer-column ul li a:hover {
     color: yellow;
   }
+.badge{display:inline-block;background:#eef2ff;color:#3730a3;border:1px solid #e0e7ff;border-radius:999px;padding:4px 10px;font-size:12px}

@@ -1,90 +1,8 @@
 body {
-  margin: 0;
-  font-family: 'Vazir', sans-serif;
-  background-color: #f9f9f9;
-  direction: rtl;
-}
-
-header {
-  background-color: #ffffff;
-  padding: 30px;
+  font-family: 'Tahoma', sans-serif;
+  background-color: #f2f2f2;
   text-align: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-header h1 {
-  margin-bottom: 15px;
-  color: #333;
-  font-size: 28px;
-}
-
-header input {
-  width: 60%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 25px;
-  padding: 40px;
-}
-
-.card {
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.card-content {
   padding: 20px;
-}
-
-.card-content h3 {
-  margin: 0;
-  font-size: 20px;
-  color: #0077cc;
-}
-
-.card-content p {
-  margin: 10px 0;
-  color: #555;
-  font-size: 14px;
-}
-
-.card-content .price {
-  font-weight: bold;
-  color: #222;
-  margin-bottom: 10px;
-}
-
-.card-content button {
-  background-color: #0077cc;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.card-content button:hover {
-  background-color: #00c896;
 }
 .header-container {
       display: flex;
@@ -360,70 +278,104 @@ header input {
     .register:hover {
       background-color: #f0f0f0;
     }
-    .modal {
-  position: fixed;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.2);
-  width: 90%;
+
+
+
+.profile-card {
+  background-color: white;
   max-width: 400px;
-  z-index: 1000;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.avatar {
+  width: 120px;
+  border-radius: 50%;
+}
+
+.title {
+  color: gray;
+  font-size: 18px;
+}
+
+.skills ul {
+  list-style: none;
+  padding: 0;
+}
+
+.skills li {
+  background-color: #e0e0e0;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #005fa3;
 }
 
 .hidden {
   display: none;
 }
-
-.modal textarea, .modal input {
-  width: 100%;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
+/* ===== Footer ===== */
     footer {
-    background-color:blue;
-    color: #eee;
-    padding: 40px 20px;
-  }
+      background-color:blue;
+      color: #eee;
+      padding: 40px 20px;
+    }
 
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: space-between;
-  }
-  .footer-column {
-    flex: 1 1 250px;
-    min-width: 220px;
-  }
-  
-  .footer-column h4 {
-    margin-bottom: 15px;
-    font-weight: bold;
-    
-    padding-bottom: 8px;
-  }
-  .footer-column ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .footer-column ul li {
-    margin-bottom: 10px;
-  }
-  .footer-column ul li a {
-    color: #eee;
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  .footer-column ul li a:hover {
-    color: yellow;
-  }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: space-between;
+    }
+
+    .footer-column {
+      flex: 1 1 250px;
+      min-width: 220px;
+    }
+
+    .footer-column h4 {
+      margin-bottom: 15px;
+      font-weight: bold;
+      padding-bottom: 8px;
+      color: white;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-column ul li a {
+      color: #eee;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-column ul li a:hover {
+      color: yellow;
+    }
+
